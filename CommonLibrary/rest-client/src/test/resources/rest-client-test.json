@@ -1,0 +1,11 @@
+{
+    "defaulServer":
+    {
+        "host":"10.10.10.10",
+        "port":"443",
+    },
+    "ConnectTimeout":"10",
+    "thread":"100",
+    "idletimeout":"30",
+    "timeout":"60",
+}
