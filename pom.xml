@@ -41,16 +41,6 @@
         <module>rest-client</module>
     </modules>
 
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<url>http://113.200.115.170:4096/nexus/content/repositories/OPEN-O_Release</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<url>http://113.200.115.170:4096/nexus/content/repositories/OPEN-O_SnapShots</url>
-		</snapshotRepository>
-	</distributionManagement>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -60,17 +50,17 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
-				<artifactId>com.springsource.org.apache.commons.lang</artifactId>
+				<artifactId>org.apache.commons.lang</artifactId>
 				<version>2.6.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
-				<artifactId>com.springsource.org.apache.commons.logging</artifactId>
+				<artifactId>org.apache.commons.logging</artifactId>
 				<version>1.1.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
-				<artifactId>com.springsource.org.apache.commons.codec</artifactId>
+				<artifactId>org.apache.commons.codec</artifactId>
 				<version>1.9.0</version>
 			</dependency>
 
@@ -81,12 +71,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
-				<artifactId>com.springsource.slf4j.log4j</artifactId>
+				<artifactId>slf4j-log4j12</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.log4j</groupId>
-				<artifactId>com.springsource.org.apache.log4j</artifactId>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
 				<version>1.2.16</version>
 			</dependency>
 			<dependency>
