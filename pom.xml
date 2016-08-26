@@ -36,6 +36,14 @@
 		<pkgzip.dir>${basedir}/../release/pkgzip</pkgzip.dir>
 		<excludesFile>**/*$*</excludesFile>
 	</properties>
+    
+     <scm>
+        <connection>scm:git:ssh://git.open-o.org:29418/common-services-common-utilities.git</connection>
+        <developerConnection>scm:git:ssh://git.open-o.org:29418/common-services-common-utilities.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://wiki.open-o.orgiew/Common_Services</url>
+    </scm>
+    
     <modules>
         <module>common-util</module>
         <module>rest-client</module>
