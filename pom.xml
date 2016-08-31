@@ -63,6 +63,7 @@
     <modules>
         <module>common-util</module>
         <module>rest-client</module>
+        <module>winery</module>
     </modules>
 
 	<dependencyManagement>

@@ -1,0 +1,22 @@
+{
+  "name": "openo-winery",
+  "version": "1.0.0",
+  "description": "openo winery",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "bower": "~1.7.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://oip.zte.com.cn/oipgit/git/Open-O-Community/common-services-common-utilities.git"
+  },
+  "keywords": [
+    "openo-winery"
+  ],
+  "author": "openo",
+  "license": "Apache-2.0"
+}
