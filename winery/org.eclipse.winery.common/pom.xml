@@ -23,7 +23,19 @@
 	<artifactId>org.eclipse.winery.common</artifactId>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<nexusproxy>https://nexus.open-o.org/content</nexusproxy>
 	</properties>
+    <distributionManagement>
+        <repository>
+            <id>open-o-releases</id>
+            <url>${nexusproxy}/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>open-o-snapshots</id>
+            <url>${nexusproxy}/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
