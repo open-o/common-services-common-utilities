@@ -16,6 +16,13 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	  <groupId>org.openo.oparent</groupId>
+	  <artifactId>oparent</artifactId>
+	  <version>1.0.0-SNAPSHOT</version>
+	  <relativePath></relativePath>
+	</parent>
+	
 	<groupId>org.eclipse.winery</groupId>
 	<artifactId>winery</artifactId>
 	<version>0.1.37-SNAPSHOT</version>
@@ -53,17 +60,7 @@
 		</license>
 	</licenses>
 	
-	<distributionManagement>
-    <repository>
-      <id>open-o-releases</id>
-      <url>${nexusproxy}/repositories/releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>open-o-snapshots</id>
-      <url>${nexusproxy}/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-  
+	
 	<scm>
 		<developerConnection>scm:git:http://git.eclipse.org/gitroot/winery/org.eclipse.winery.winery.git/</developerConnection>
 		<tag>HEAD</tag>
@@ -88,6 +85,14 @@
 				<artifactId>versions-maven-plugin</artifactId>
 				<version>2.1</version>
 			</plugin>
+			
+			<plugin>            
+                <artifactId>maven-checkstyle-plugin</artifactId>
+			    <configuration>
+                   <skip>true</skip>
+               </configuration>
+            </plugin>
 		</plugins>
+				
 	</build>
 </project>
