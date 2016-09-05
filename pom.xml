@@ -17,6 +17,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+	  <groupId>org.openo.oparent</groupId>
+	  <artifactId>oparent</artifactId>
+	  <version>1.0.0-SNAPSHOT</version>
+	  <relativePath></relativePath>
+	</parent>
+
 	<groupId>org.openo.common-services.common-utilities</groupId>
 	<artifactId>common-setting</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
@@ -42,17 +50,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>open-o-releases</id>
-            <url>${nexusproxy}/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>open-o-snapshots</id>
-            <url>${nexusproxy}/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-    
      <scm>
         <connection>scm:git:ssh://git.open-o.org:29418/common-services-common-utilities.git</connection>
         <developerConnection>scm:git:ssh://git.open-o.org:29418/common-services-common-utilities.git</developerConnection>
@@ -63,6 +60,7 @@
     <modules>
         <module>common-util</module>
         <module>rest-client</module>
+        <module>winery</module>
     </modules>
 
 	<dependencyManagement>
