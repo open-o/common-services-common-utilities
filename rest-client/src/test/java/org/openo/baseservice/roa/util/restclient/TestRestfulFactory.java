@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import mockit.Mock;
 import mockit.MockUp;
+import mockit.integration.junit4.JMockit;
 
 /**
  * <br/>
@@ -36,15 +38,16 @@ import mockit.MockUp;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 21-Jun-2016
+ * @version   21-Jun-2016
  */
+@RunWith(JMockit.class)
 public class TestRestfulFactory {
 
     /**
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -54,7 +57,7 @@ public class TestRestfulFactory {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -64,7 +67,7 @@ public class TestRestfulFactory {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -74,7 +77,7 @@ public class TestRestfulFactory {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -83,7 +86,7 @@ public class TestRestfulFactory {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetRestInstance() {

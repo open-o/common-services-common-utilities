@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ import java.text.MessageFormat;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 28-May-2016
+ * @version   28-May-2016
  */
 public class ServiceException extends Exception {
 
@@ -54,7 +54,7 @@ public class ServiceException extends Exception {
      * This method is only used as deserialized, in other cases, use parameterized constructor.
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     public ServiceException() {
         super("");
@@ -65,7 +65,7 @@ public class ServiceException extends Exception {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param id: details.
      * @param cause: reason.
      */
@@ -79,7 +79,7 @@ public class ServiceException extends Exception {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param message: details.
      */
     public ServiceException(final String message) {
@@ -91,7 +91,7 @@ public class ServiceException extends Exception {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param id: exception id.
      * @param message: details.
      */
@@ -105,7 +105,7 @@ public class ServiceException extends Exception {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param id: exception id.
      * @param httpCode: http status code.
      */
@@ -120,7 +120,7 @@ public class ServiceException extends Exception {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param id: exception id.
      * @param httpCode: http code.
      * @param exceptionArgs: Exception handling frame parameters.
@@ -138,7 +138,7 @@ public class ServiceException extends Exception {
      * Have a placeholder exception, use args formatted message.
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param id: exception id.
      * @param message: details.
      * @param args: Placeholders for parameters
@@ -155,7 +155,7 @@ public class ServiceException extends Exception {
      * Have a placeholder exception, use args formatted message
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param id: exception id.
      * @param message: details.
      * @param cause: reason.
@@ -172,7 +172,7 @@ public class ServiceException extends Exception {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param id: exception id.
      * @param message: details.
      * @param cause: reason.
@@ -187,7 +187,7 @@ public class ServiceException extends Exception {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param cause: reason.
      */
     public ServiceException(final Throwable cause) {
@@ -198,7 +198,7 @@ public class ServiceException extends Exception {
      * Get exceptoin id.<br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String getId() {
         if(id == null || id.isEmpty()) {
@@ -223,7 +223,7 @@ public class ServiceException extends Exception {
      * Obtain the ROA exception handling framework parameters<br/>
      * 
      * @return exception args.
-     * @since SDNO 0.5
+     * @since  
      */
     public ExceptionArgs getExceptionArgs() {
         return exceptionArgs;
@@ -237,7 +237,7 @@ public class ServiceException extends Exception {
      * Gets the parameter information<br/>
      * 
      * @return parameter list.
-     * @since SDNO 0.5
+     * @since  
      */
     protected Object[] getArgs() {
         if(args == null || args.length == 0 || DEFAULT_ID.equals(getId())) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import net.sf.json.JSONObject;
 
@@ -35,6 +35,7 @@ import java.net.URL;
 
 import mockit.Mock;
 import mockit.MockUp;
+import mockit.integration.junit4.JMockit;
 
 /**
  * <br/>
@@ -42,15 +43,16 @@ import mockit.MockUp;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 20-Jun-2016
+ * @version   20-Jun-2016
  */
+@RunWith(JMockit.class)
 public class TestRestfulConfigure {
 
     /**
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -61,7 +63,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -71,7 +73,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -81,7 +83,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -106,11 +108,9 @@ public class TestRestfulConfigure {
 
     /**
      * <br/>
-     * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigure() throws Exception {
         final RestfulConfigure configure = new RestfulConfigure();
@@ -126,11 +126,9 @@ public class TestRestfulConfigure {
 
     /**
      * <br/>
-     * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureAppRootNull() throws Exception {
         new MockUp<SystemEnvVariablesDefImpl>() {
@@ -157,9 +155,8 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureDefault() throws Exception {
 
@@ -188,9 +185,8 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureException() throws Exception {
 
@@ -214,11 +210,9 @@ public class TestRestfulConfigure {
     }
 
     /**
-     * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureString() {
         final String configFile = "rest-client-test.json";
@@ -236,9 +230,8 @@ public class TestRestfulConfigure {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
-    @Ignore
     @Test
     public final void testGetOptions() {
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ import mockit.NonStrictExpectations;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 02-Jun-2016
+ * @version   02-Jun-2016
  */
 public class AesCipherTest {
 
@@ -47,7 +47,7 @@ public class AesCipherTest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -58,7 +58,7 @@ public class AesCipherTest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -68,7 +68,7 @@ public class AesCipherTest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -78,7 +78,7 @@ public class AesCipherTest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -157,7 +157,7 @@ public class AesCipherTest {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testCipherManagerImplStringDiffKey() {
@@ -185,7 +185,7 @@ public class AesCipherTest {
 
         final AbstractCipher cipherManager = CipherCreator.instance().create("secret-key");
         final String encrypted = cipherManager.encrypt("test-encrypt");
-        Assert.assertEquals(encrypted, encrypted);
+        Assert.assertEquals(encrypted, null);
 
     }
 
