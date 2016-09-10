@@ -35,32 +35,6 @@ public class RestfulOptions {
     private final Map<String, Object> optionsMap = new HashMap<>();
 
     /**
-     * Set called service name.<br/>
-     * 
-     * @param serviceName service name.
-     * @return true.
-     * @since  
-     */
-    public boolean setCalledServiceName(final String serviceName) {
-        this.setOption(RestfulClientConst.CALLED_SERVICE_NAME, serviceName);
-        return true;
-    }
-
-    /**
-     * Get called service name.<br/>
-     * 
-     * @return
-     * @since  
-     */
-    public String getCalledServicName() {
-        final Object obj = this.getOption(RestfulClientConst.CALLED_SERVICE_NAME);
-        if(null == obj) {
-            return "";
-        }
-        return (String)obj;
-    }
-
-    /**
      * Get port.<br/>
      * 
      * @return port.

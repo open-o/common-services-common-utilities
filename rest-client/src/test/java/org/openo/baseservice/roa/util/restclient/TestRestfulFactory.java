@@ -26,9 +26,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import mockit.Mock;
 import mockit.MockUp;
+import mockit.integration.junit4.JMockit;
 
 /**
  * <br/>
@@ -38,6 +40,7 @@ import mockit.MockUp;
  * @author
  * @version   21-Jun-2016
  */
+@RunWith(JMockit.class)
 public class TestRestfulFactory {
 
     /**

@@ -31,7 +31,6 @@ import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.HttpExchange;
 import org.eclipse.jetty.http.HttpMethods;
 import org.openo.baseservice.remoteservice.exception.ServiceException;
-import org.openo.baseservice.roa.util.ServiceUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -193,23 +192,6 @@ public abstract class HttpBaseRest implements Restful {
         } else {
             String host = defaultIP;
             int iPort = defaultPort;
-            String calledServiceName = null;
-            if(options != null) {
-                calledServiceName = options.getCalledServicName();
-            }
-            final ServiceUtil serviceUtil = new ServiceUtil(calledServiceName, url.toString());
-            final String configHost = serviceUtil.getServiceHost();
-            final int configPort = serviceUtil.getServicePort();
-            if(!configHost.isEmpty() && configPort > 0) {
-                if(options != null) {
-                    options.setHost(configHost);
-                    options.setPort(configPort);
-                } else {
-                    host = configHost;
-
-                    iPort = configPort;
-                }
-            }
             if(options != null) {
                 host = options.getHost();
                 if(host.isEmpty()) {

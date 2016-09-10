@@ -97,33 +97,6 @@ public class TestRestfulOptions {
      * @since  
      */
     @Test
-    public void testSetCalledServiceName() {
-        final RestfulOptions options = new RestfulOptions();
-        final String serviceName = "sample-service";
-        assertTrue(options.setCalledServiceName(serviceName));
-        assertEquals(serviceName, options.getCalledServicName());
-    }
-
-    /**
-     * <br/>
-     * 
-     * @since  
-     */
-    @Test
-    public void testGetCalledServicName() {
-        final RestfulOptions options = new RestfulOptions();
-        final String serviceName = "sample-service";
-        assertEquals("", options.getCalledServicName());
-        options.setCalledServiceName(serviceName);
-        assertEquals(serviceName, options.getCalledServicName());
-    }
-
-    /**
-     * <br/>
-     * 
-     * @since  
-     */
-    @Test
     public void testGetPort() {
         final RestfulOptions options = new RestfulOptions();
         final int port = 9091;

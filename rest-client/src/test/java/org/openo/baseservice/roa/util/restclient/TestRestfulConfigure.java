@@ -24,8 +24,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import net.sf.json.JSONObject;
 
@@ -35,6 +35,7 @@ import java.net.URL;
 
 import mockit.Mock;
 import mockit.MockUp;
+import mockit.integration.junit4.JMockit;
 
 /**
  * <br/>
@@ -44,6 +45,7 @@ import mockit.MockUp;
  * @author
  * @version   20-Jun-2016
  */
+@RunWith(JMockit.class)
 public class TestRestfulConfigure {
 
     /**
@@ -106,11 +108,9 @@ public class TestRestfulConfigure {
 
     /**
      * <br/>
-     * 
      * @throws Exception
      * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigure() throws Exception {
         final RestfulConfigure configure = new RestfulConfigure();
@@ -126,11 +126,9 @@ public class TestRestfulConfigure {
 
     /**
      * <br/>
-     * 
      * @throws Exception
      * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureAppRootNull() throws Exception {
         new MockUp<SystemEnvVariablesDefImpl>() {
@@ -159,7 +157,6 @@ public class TestRestfulConfigure {
      * @throws Exception
      * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureDefault() throws Exception {
 
@@ -190,7 +187,6 @@ public class TestRestfulConfigure {
      * @throws Exception
      * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureException() throws Exception {
 
@@ -214,11 +210,9 @@ public class TestRestfulConfigure {
     }
 
     /**
-     * <br/>
      * 
      * @since  
      */
-    @Ignore
     @Test
     public final void testRestfulConfigureString() {
         final String configFile = "rest-client-test.json";
@@ -238,7 +232,6 @@ public class TestRestfulConfigure {
      * 
      * @since  
      */
-    @Ignore
     @Test
     public final void testGetOptions() {
     }

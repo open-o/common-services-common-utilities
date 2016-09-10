@@ -19,8 +19,10 @@ package org.openo.baseservice.roa.util.restclient;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.openo.baseservice.remoteservice.exception.ServiceException;
-import org.openo.baseservice.roa.util.ServiceUtil;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.net.URLEncoder;
 
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.HttpExchange;
@@ -29,18 +31,12 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import org.openo.baseservice.remoteservice.exception.ServiceException;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.net.URLEncoder;
-
-import mockit.Expectations;
 import mockit.Mock;
 import mockit.MockUp;
 import mockit.Mocked;
@@ -268,7 +264,6 @@ public class TestHttpRest {
      * @throws Exception
      * @since  
      */
-    @Ignore
     @Test
     public void testGetStringRestfulParametesEncodeError() throws Exception {
         final RestfulOptions options = new RestfulOptions();
@@ -360,7 +355,6 @@ public class TestHttpRest {
      * @throws Exception
      * @since  
      */
-    @Ignore
     @Test
     public void testHeadStringRestfulParametesRestfulOptions() throws Exception {
         final RestfulOptions options = new RestfulOptions();
@@ -388,20 +382,6 @@ public class TestHttpRest {
         parametes.put("address", null);
         parametes.putHttpContextHeader("Content-Type", "");
         parametes.putHttpContextHeader("Accept-Encoding", "");
-        new Expectations() {
-
-            ServiceUtil serviceUtil;
-
-            {
-                serviceUtil = new ServiceUtil(anyString, anyString);
-                serviceUtil.getServiceHost();
-                returns("127.0.0.1");
-
-                serviceUtil.getServicePort();
-                returns(10);
-            }
-
-        };
         final RestfulResponse response = httpRest.head("path/to/service", parametes, options);
         assertEquals(HttpExchange.STATUS_COMPLETED, response.getStatus());
     }
@@ -535,7 +515,6 @@ public class TestHttpRest {
      * @throws ServiceException
      * @since  
      */
-    @Ignore
     @Test
     public void testPutStringRestfulParametes() throws ServiceException {
         final RestfulOptions options = new RestfulOptions();
@@ -563,20 +542,6 @@ public class TestHttpRest {
         parametes.put("address", null);
         parametes.putHttpContextHeader("Content-Type", "");
         parametes.putHttpContextHeader("Accept-Encoding", "");
-        new Expectations() {
-
-            ServiceUtil serviceUtil;
-
-            {
-                serviceUtil = new ServiceUtil(anyString, anyString);
-                serviceUtil.getServiceHost();
-                returns("127.0.0.1");
-
-                serviceUtil.getServicePort();
-                returns(-1);
-            }
-
-        };
         final RestfulResponse response = httpRest.put("path/to/service", parametes);
         assertEquals(HttpExchange.STATUS_COMPLETED, response.getStatus());
     }
@@ -587,7 +552,6 @@ public class TestHttpRest {
      * @throws ServiceException
      * @since  
      */
-    @Ignore
     @Test
     public void testPutStringRestfulParametesRestfulOptions() throws ServiceException {
 
@@ -616,20 +580,6 @@ public class TestHttpRest {
         parametes.put("address", null);
         parametes.putHttpContextHeader("Content-Type", "");
         parametes.putHttpContextHeader("Accept-Encoding", "");
-        new Expectations() {
-
-            ServiceUtil serviceUtil;
-
-            {
-                serviceUtil = new ServiceUtil(anyString, anyString);
-                serviceUtil.getServiceHost();
-                returns("127.0.0.1");
-
-                serviceUtil.getServicePort();
-                returns(10);
-            }
-
-        };
         final RestfulResponse response = httpRest.put("path/to/service", parametes, null);
         assertEquals(HttpExchange.STATUS_COMPLETED, response.getStatus());
     }
@@ -774,7 +724,6 @@ public class TestHttpRest {
      * @throws ServiceException
      * @since  
      */
-    @Ignore
     @Test
     public void testPostStringRestfulParametesRestfulOptions() throws ServiceException {
         final RestfulOptions options = new RestfulOptions();
@@ -803,20 +752,6 @@ public class TestHttpRest {
         parameters.setRawData("{ \"data\"=\"sample JSON data\"");
         parameters.putHttpContextHeader("Content-Type", "");
         parameters.putHttpContextHeader("Accept-Encoding", "");
-        new Expectations() {
-
-            ServiceUtil serviceUtil;
-
-            {
-                serviceUtil = new ServiceUtil(anyString, anyString);
-                serviceUtil.getServiceHost();
-                returns("127.0.0.1");
-
-                serviceUtil.getServicePort();
-                returns(10);
-            }
-
-        };
         thrown.expect(ServiceException.class);
         thrown.expectMessage("request is exception");
         final RestfulResponse response = httpRest.post("path/to/service", parameters, null);
@@ -941,7 +876,6 @@ public class TestHttpRest {
      * @throws ServiceException
      * @since  
      */
-    @Ignore
     @Test
     public void testDeleteStringRestfulParametesRestfulOptions() throws ServiceException {
         final RestfulOptions options = new RestfulOptions();
@@ -970,20 +904,6 @@ public class TestHttpRest {
         parameters.setRawData("{ \"data\"=\"sample JSON data\"");
         parameters.putHttpContextHeader("Content-Type", "");
         parameters.putHttpContextHeader("Accept-Encoding", "");
-        new Expectations() {
-
-            ServiceUtil serviceUtil;
-
-            {
-                serviceUtil = new ServiceUtil(anyString, anyString);
-                serviceUtil.getServiceHost();
-                returns("127.0.0.1");
-
-                serviceUtil.getServicePort();
-                returns(10);
-            }
-
-        };
         final RestfulResponse response = httpRest.delete("path/to/service", parameters, options);
         assertEquals(HttpExchange.STATUS_COMPLETED, response.getStatus());
     }
@@ -1090,7 +1010,6 @@ public class TestHttpRest {
      * @throws ServiceException
      * @since  
      */
-    @Ignore
     @Test
     public void testPatchStringRestfulParametes() throws ServiceException {
         final RestfulOptions options = new RestfulOptions();
@@ -1119,20 +1038,6 @@ public class TestHttpRest {
         parameters.setRawData("{ \"data\"=\"sample JSON data\"");
         parameters.putHttpContextHeader("Content-Type", "");
         parameters.putHttpContextHeader("Accept-Encoding", "");
-        new Expectations() {
-
-            ServiceUtil serviceUtil;
-
-            {
-                serviceUtil = new ServiceUtil(anyString, anyString);
-                serviceUtil.getServiceHost();
-                returns("127.0.0.1");
-
-                serviceUtil.getServicePort();
-                returns(10);
-            }
-
-        };
         final RestfulResponse response = httpRest.patch("path/to/service", parameters);
         assertEquals(HttpExchange.STATUS_COMPLETED, response.getStatus());
     }
@@ -1143,7 +1048,6 @@ public class TestHttpRest {
      * @throws ServiceException
      * @since  
      */
-    @Ignore
     @Test
     public void testPatchStringRestfulParametesRestfulOptions() throws ServiceException {
         final RestfulOptions options = new RestfulOptions();
@@ -1172,20 +1076,6 @@ public class TestHttpRest {
         parameters.setRawData("{ \"data\"=\"sample JSON data\"");
         parameters.putHttpContextHeader("Content-Type", "");
         parameters.putHttpContextHeader("Accept-Encoding", "");
-        new Expectations() {
-
-            ServiceUtil serviceUtil;
-
-            {
-                serviceUtil = new ServiceUtil(anyString, anyString);
-                serviceUtil.getServiceHost();
-                returns("127.0.0.1");
-
-                serviceUtil.getServicePort();
-                returns(10);
-            }
-
-        };
         final RestfulResponse response = httpRest.patch("path/to/service", parameters, options);
         assertEquals(HttpExchange.STATUS_COMPLETED, response.getStatus());
     }

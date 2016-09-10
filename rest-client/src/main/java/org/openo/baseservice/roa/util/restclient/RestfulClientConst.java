@@ -37,8 +37,6 @@ public class RestfulClientConst {
 
     public static final String SERVER_KEY_NAME = "defaulServer";
 
-    public static final String CALLED_SERVICE_NAME = "serviceName";
-
     public static final String HOST_KEY_NAME = "host";
 
     public static final String PORT_KEY_NAME = "port";
