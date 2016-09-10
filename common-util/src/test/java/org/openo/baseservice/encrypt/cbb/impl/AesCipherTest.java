@@ -185,7 +185,7 @@ public class AesCipherTest {
 
         final AbstractCipher cipherManager = CipherCreator.instance().create("secret-key");
         final String encrypted = cipherManager.encrypt("test-encrypt");
-        Assert.assertEquals(encrypted, encrypted);
+        Assert.assertEquals(encrypted, null);
 
     }
 
