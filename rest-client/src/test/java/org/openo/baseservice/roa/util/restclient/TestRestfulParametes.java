@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import java.util.Map;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 21-Jun-2016
+ * @version   21-Jun-2016
  */
 public class TestRestfulParametes {
 
@@ -42,7 +42,7 @@ public class TestRestfulParametes {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -52,7 +52,7 @@ public class TestRestfulParametes {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -62,7 +62,7 @@ public class TestRestfulParametes {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -72,7 +72,7 @@ public class TestRestfulParametes {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -81,7 +81,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGet() {
@@ -96,7 +96,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetRawData() {
@@ -109,7 +109,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetRawData() {
@@ -123,7 +123,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testPut() {
@@ -137,7 +137,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testPutHttpContextHeaderStringString() {
@@ -149,7 +149,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testPutHttpContextHeaderStringInt() {
@@ -161,7 +161,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetHttpContextHeader() {
@@ -175,7 +175,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetParamMap() {
@@ -188,7 +188,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetParamMap() {
@@ -203,7 +203,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetHeaderMap() {
@@ -216,7 +216,7 @@ public class TestRestfulParametes {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetHeaderMap() {

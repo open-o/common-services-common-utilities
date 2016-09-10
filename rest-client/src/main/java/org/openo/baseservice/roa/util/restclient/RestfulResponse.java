@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,7 +24,7 @@ import java.util.Map;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 28-May-2016
+ * @version   28-May-2016
  */
 public class RestfulResponse {
 
@@ -38,7 +38,7 @@ public class RestfulResponse {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public int getStatus() {
         return status;
@@ -48,7 +48,7 @@ public class RestfulResponse {
      * <br/>
      * 
      * @param status
-     * @since SDNO 0.5
+     * @since  
      */
     public void setStatus(final int status) {
         this.status = status;
@@ -58,7 +58,7 @@ public class RestfulResponse {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public Map<String, String> getRespHeaderMap() {
         return respHeaderMap;
@@ -68,7 +68,7 @@ public class RestfulResponse {
      * <br/>
      * 
      * @param header
-     * @since SDNO 0.5
+     * @since  
      */
     public void setRespHeaderMap(final Map<String, String> header) {
         this.respHeaderMap = header;
@@ -79,7 +79,7 @@ public class RestfulResponse {
      * 
      * @param key header param name.
      * @return header param value as integer. (-1 if error)
-     * @since SDNO 0.5
+     * @since  
      */
     public int getRespHeaderInt(final String key) {
         if(respHeaderMap != null) {
@@ -96,7 +96,7 @@ public class RestfulResponse {
      * 
      * @param key header param name.
      * @return value as long. -1 if no value.
-     * @since SDNO 0.5
+     * @since  
      */
     public long getRespHeaderLong(final String key) {
         if(respHeaderMap != null) {
@@ -113,7 +113,7 @@ public class RestfulResponse {
      * 
      * @param key header name.
      * @return header value.
-     * @since SDNO 0.5
+     * @since  
      */
     public String getRespHeaderStr(final String key) {
         if(respHeaderMap != null) {
@@ -126,7 +126,7 @@ public class RestfulResponse {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String getResponseContent() {
         return responseContent;
@@ -136,7 +136,7 @@ public class RestfulResponse {
      * <br/>
      * 
      * @param responseString
-     * @since SDNO 0.5
+     * @since  
      */
     public void setResponseJson(final String responseString) {
         this.responseContent = responseString;

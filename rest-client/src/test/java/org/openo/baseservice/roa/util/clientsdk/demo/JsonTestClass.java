@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ package org.openo.baseservice.roa.util.clientsdk.demo;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 13-Jun-2016
+ * @version   13-Jun-2016
  */
 public class JsonTestClass {
 
@@ -41,7 +41,7 @@ public class JsonTestClass {
      * <p>
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     public JsonTestClass() {
     }
@@ -50,7 +50,7 @@ public class JsonTestClass {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String getName() {
         return name;
@@ -60,7 +60,7 @@ public class JsonTestClass {
      * <br/>
      * 
      * @param name
-     * @since SDNO 0.5
+     * @since  
      */
     public void setName(String name) {
         this.name = name;
@@ -70,7 +70,7 @@ public class JsonTestClass {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public int getId() {
         return id;
@@ -80,7 +80,7 @@ public class JsonTestClass {
      * <br/>
      * 
      * @param id
-     * @since SDNO 0.5
+     * @since  
      */
     public void setId(int id) {
         this.id = id;

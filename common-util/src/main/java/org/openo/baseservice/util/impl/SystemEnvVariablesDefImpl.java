@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,9 +29,9 @@ import java.io.IOException;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 24-Jun-2016
+ * @version   24-Jun-2016
  */
-public class SystemEnvVariablesDefImpl extends SystemEnvVariables {
+public class SystemEnvVariablesDefImpl implements SystemEnvVariables {
 
     private static final Logger LOG = LoggerFactory.getLogger(SystemEnvVariablesDefImpl.class);
 
@@ -50,7 +50,7 @@ public class SystemEnvVariablesDefImpl extends SystemEnvVariables {
      * 
      * @param inPath input path
      * @return the canonical path.
-     * @since SDNO 0.5
+     * @since  
      */
     private String getCanonicalPath(final String inPath) {
         String path = null;

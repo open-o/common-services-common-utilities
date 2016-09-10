@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ import mockit.MockUp;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 20-Jun-2016
+ * @version   20-Jun-2016
  */
 public class TestRestfulConfigure {
 
@@ -50,7 +50,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -61,7 +61,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -71,7 +71,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -81,7 +81,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -108,7 +108,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -128,7 +128,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -157,7 +157,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -188,7 +188,7 @@ public class TestRestfulConfigure {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -216,7 +216,7 @@ public class TestRestfulConfigure {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -236,7 +236,7 @@ public class TestRestfulConfigure {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test

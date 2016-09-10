@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31,7 +31,7 @@ import java.util.Properties;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 28-May-2016
+ * @version   28-May-2016
  */
 public class ServiceUtil {
 
@@ -51,7 +51,7 @@ public class ServiceUtil {
      * Load profile information.
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      * @param serviceName user-specified service name.
      * @param url invoked service url.
      */
@@ -71,7 +71,7 @@ public class ServiceUtil {
      * <br/>
      * 
      * @return host
-     * @since SDNO 0.5
+     * @since  
      */
     public String getServiceHost() {
         final String host = allConfigure.getProperty(serviceName + "." + serviceStage + ".host");
@@ -86,7 +86,7 @@ public class ServiceUtil {
      * <br/>
      * 
      * @return port
-     * @since SDNO 0.5
+     * @since  
      */
     public int getServicePort() {
         final String portStr = allConfigure.getProperty(serviceName + "." + serviceStage + ".port");
@@ -130,7 +130,7 @@ public class ServiceUtil {
      * Loads the client and service configuration files.
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     private void loadPropertyFile() {
         final Properties clientConfigure = loadProperties(serviceName + "-client-configure.properties");
@@ -145,7 +145,7 @@ public class ServiceUtil {
      * 
      * @param classProperties: service profile file name.
      * @return Service configuration.
-     * @since SDNO 0.5
+     * @since  
      */
     private Properties loadProperties(final String classProperties) {
         final Properties properties = new Properties();

@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ package org.openo.baseservice.encrypt.cbb.inf;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 31-May-2016
+ * @version   31-May-2016
  */
 public interface AbstractCipher {
 
@@ -33,7 +33,7 @@ public interface AbstractCipher {
      * 
      * @param plain string to be encrypted.
      * @return encrypted string.
-     * @since SDNO 0.5
+     * @since  
      */
     String encrypt(String plain);
 
@@ -43,7 +43,7 @@ public interface AbstractCipher {
      * 
      * @param encrypted String is encrypted by AES 128
      * @return plain after decrypt
-     * @since SDNO 0.5
+     * @since  
      */
     String decrypt(String encrypted);
 

@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,7 +25,7 @@ import java.util.Map;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 Aug 9, 2016
+ * @version   Aug 9, 2016
  */
 public class RestfulParametes {
 
@@ -40,7 +40,7 @@ public class RestfulParametes {
      * 
      * @param key
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String get(final String key) {
         return paramMap.get(key);
@@ -50,7 +50,7 @@ public class RestfulParametes {
      * <br/>
      * 
      * @param data
-     * @since SDNO 0.5
+     * @since  
      */
     public void setRawData(final String data) {
         this.rawData = data;
@@ -60,7 +60,7 @@ public class RestfulParametes {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String getRawData() {
         return this.rawData;
@@ -72,7 +72,7 @@ public class RestfulParametes {
      * @param key
      * @param value
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String put(final String key, final String value) {
         return paramMap.put(key, value);
@@ -84,7 +84,7 @@ public class RestfulParametes {
      * @param key
      * @param value
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String putHttpContextHeader(final String key, final String value) {
         return headerMap.put(key, value);
@@ -96,7 +96,7 @@ public class RestfulParametes {
      * @param key
      * @param value
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String putHttpContextHeader(final String key, final int value) {
         return this.putHttpContextHeader(key, String.valueOf(value));
@@ -107,7 +107,7 @@ public class RestfulParametes {
      * 
      * @param key
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String getHttpContextHeader(final String key) {
         return headerMap.get(key);
@@ -117,7 +117,7 @@ public class RestfulParametes {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public Map<String, String> getParamMap() {
         return paramMap;
@@ -127,7 +127,7 @@ public class RestfulParametes {
      * <br/>
      * 
      * @param paramMap
-     * @since SDNO 0.5
+     * @since  
      */
     public void setParamMap(final Map<String, String> paramMap) {
         this.paramMap = paramMap;
@@ -137,7 +137,7 @@ public class RestfulParametes {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public Map<String, String> getHeaderMap() {
         return this.headerMap;
@@ -147,7 +147,7 @@ public class RestfulParametes {
      * <br/>
      * 
      * @param headerMap
-     * @since SDNO 0.5
+     * @since  
      */
     public void setHeaderMap(final Map<String, String> headerMap) {
         this.headerMap = headerMap;

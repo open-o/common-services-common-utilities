@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,7 +24,7 @@ import java.util.Map;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 28-May-2016
+ * @version   28-May-2016
  */
 public class RestfulOptions {
 
@@ -39,7 +39,7 @@ public class RestfulOptions {
      * 
      * @param serviceName service name.
      * @return true.
-     * @since SDNO 0.5
+     * @since  
      */
     public boolean setCalledServiceName(final String serviceName) {
         this.setOption(RestfulClientConst.CALLED_SERVICE_NAME, serviceName);
@@ -50,7 +50,7 @@ public class RestfulOptions {
      * Get called service name.<br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public String getCalledServicName() {
         final Object obj = this.getOption(RestfulClientConst.CALLED_SERVICE_NAME);
@@ -64,7 +64,7 @@ public class RestfulOptions {
      * Get port.<br/>
      * 
      * @return port.
-     * @since SDNO 0.5
+     * @since  
      */
     public int getPort() {
         final Object obj = this.getOption(RestfulClientConst.PORT_KEY_NAME);
@@ -79,7 +79,7 @@ public class RestfulOptions {
      * 
      * @param port port to set.
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public boolean setPort(final int port) {
         this.setOption(RestfulClientConst.PORT_KEY_NAME, port);
@@ -90,7 +90,7 @@ public class RestfulOptions {
      * Get host.<br/>
      * 
      * @return the host.
-     * @since SDNO 0.5
+     * @since  
      */
     public String getHost() {
         final Object obj = this.getOption(RestfulClientConst.HOST_KEY_NAME);
@@ -105,7 +105,7 @@ public class RestfulOptions {
      * 
      * @param host host to set.
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public boolean setHost(final String host) {
         this.setOption(RestfulClientConst.HOST_KEY_NAME, host);
@@ -117,7 +117,7 @@ public class RestfulOptions {
      * 
      * @param timeout time-out to set in seconds.
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public boolean setRestTimeout(final int timeout) {
         if(0 < timeout && REST_OPTIONS_TIMEOUT_MAXTIMEOUT >= timeout) {
@@ -131,7 +131,7 @@ public class RestfulOptions {
      * Get time-out.<br/>
      * 
      * @return time-out in seconds.
-     * @since SDNO 0.5
+     * @since  
      */
     public int getRestTimeout() {
         final Object obj = this.getOption(REST_OPTIONS_NAME_TIMEOUT);
@@ -146,7 +146,7 @@ public class RestfulOptions {
      * 
      * @param optionName option name.
      * @return option
-     * @since SDNO 0.5
+     * @since  
      */
     public Object getOption(final String optionName) {
         return optionsMap.get(optionName);
@@ -157,7 +157,7 @@ public class RestfulOptions {
      * 
      * @param optionName option name.
      * @return option value as int.
-     * @since SDNO 0.5
+     * @since  
      */
     public int getIntOption(final String optionName) {
         final Object obj = this.getOption(optionName);
@@ -172,7 +172,7 @@ public class RestfulOptions {
      * 
      * @param optionName option name.
      * @return option value as string.
-     * @since SDNO 0.5
+     * @since  
      */
     public String getStringOption(final String optionName) {
         final Object obj = this.getOption(optionName);
@@ -188,7 +188,7 @@ public class RestfulOptions {
      * @param option option name.
      * @param optionsValue option value.
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public Object setOption(final String option, final Object optionsValue) {
         return optionsMap.put(option, optionsValue);

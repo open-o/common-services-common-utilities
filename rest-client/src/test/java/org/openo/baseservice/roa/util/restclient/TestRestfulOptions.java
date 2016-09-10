@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ import mockit.integration.junit4.JMockit;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 20-Jun-2016
+ * @version   20-Jun-2016
  */
 @RunWith(JMockit.class)
 public class TestRestfulOptions {
@@ -55,7 +55,7 @@ public class TestRestfulOptions {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -65,7 +65,7 @@ public class TestRestfulOptions {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -75,7 +75,7 @@ public class TestRestfulOptions {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -85,7 +85,7 @@ public class TestRestfulOptions {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -94,7 +94,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetCalledServiceName() {
@@ -107,7 +107,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetCalledServicName() {
@@ -121,7 +121,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetPort() {
@@ -135,7 +135,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetPort() {
@@ -148,7 +148,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetHost() {
@@ -162,7 +162,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetHost() {
@@ -175,7 +175,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetRestTimeout() {
@@ -207,7 +207,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetRestTimeout() {
@@ -223,7 +223,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetOption() {
@@ -248,7 +248,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetIntOption() {
@@ -270,7 +270,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetStringOption() {
@@ -291,7 +291,7 @@ public class TestRestfulOptions {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testSetOption() {

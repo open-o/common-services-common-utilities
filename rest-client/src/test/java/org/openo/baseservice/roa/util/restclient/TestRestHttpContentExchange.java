@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@ import mockit.integration.junit4.JMockit;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 20-Jun-2016
+ * @version   20-Jun-2016
  */
 @RunWith(JMockit.class)
 public class TestRestHttpContentExchange {
@@ -78,7 +78,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -88,7 +88,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -98,7 +98,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -108,7 +108,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -119,7 +119,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws IOException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnRequestCommitted() throws IOException {
@@ -137,7 +137,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws IOException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnRequestComplete() throws IOException {
@@ -155,7 +155,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnResponseComplete() throws Exception {
@@ -199,7 +199,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testDecompressGzipToStr() throws Exception {
@@ -242,7 +242,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testDecompressGzipToStrException() throws Exception {
@@ -294,7 +294,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testDecompressGzipToStrNull() throws Exception {
@@ -314,7 +314,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnResponseHeaderBufferBuffer() throws Exception {
@@ -352,7 +352,7 @@ public class TestRestHttpContentExchange {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnExceptionThrowable() {
@@ -366,7 +366,7 @@ public class TestRestHttpContentExchange {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnExceptionThrowableWithCallback() {
@@ -397,7 +397,7 @@ public class TestRestHttpContentExchange {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnConnectionFailedThrowable() {
@@ -411,7 +411,7 @@ public class TestRestHttpContentExchange {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testOnConnectionFailedThrowableException() {
@@ -442,7 +442,7 @@ public class TestRestHttpContentExchange {
     /**
      * <br/>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testExpireHttpDestination() {
@@ -457,7 +457,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testExpireHttpDestinationException() throws Exception {
@@ -494,7 +494,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testIsGzip() throws Exception {
@@ -533,7 +533,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetResponse() throws Exception {
@@ -565,7 +565,7 @@ public class TestRestHttpContentExchange {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetResponseGzip() throws Exception {

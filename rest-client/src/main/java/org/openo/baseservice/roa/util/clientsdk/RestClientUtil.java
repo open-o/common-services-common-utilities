@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31,7 +31,7 @@ import java.util.Set;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 28-May-2016
+ * @version   28-May-2016
  */
 public class RestClientUtil {
 
@@ -64,7 +64,7 @@ public class RestClientUtil {
      * @param restFull ReST request instance
      * @return The ReST response.
      * @throws ServiceException Exception information.
-     * @since SDNO 0.5
+     * @since  
      */
     public static RestfulResponse invokeMethod(final String method, final String path,
             final RestfulParametes parameters, final Restful restFull) throws ServiceException {
@@ -95,7 +95,7 @@ public class RestClientUtil {
      * @param restFull restFull instance.
      * @param callback callback function.
      * @throws ServiceException in case error.
-     * @since SDNO 0.5
+     * @since  
      */
     public static void invokeAsyncMethod(final String method, final String path, final RestfulParametes parameters,
             final Restful restFull, final RestfulAsyncCallback callback) throws ServiceException {
@@ -119,7 +119,7 @@ public class RestClientUtil {
      * 
      * @param clazz: class type.
      * @return whether primitive or not.
-     * @since SDNO 0.5
+     * @since  
      */
     public static boolean isPrimitive(final Class<?> clazz) {
         if(clazz.isPrimitive()) {

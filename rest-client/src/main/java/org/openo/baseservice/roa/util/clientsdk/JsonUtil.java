@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,7 +29,7 @@ import java.io.IOException;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 28-May-2016
+ * @version   28-May-2016
  */
 public final class JsonUtil {
 
@@ -50,7 +50,7 @@ public final class JsonUtil {
      * @param type: result type.
      * @return parsed object.
      * @throws IOException incase error.
-     * @since SDNO 0.5
+     * @since  
      */
     public static <T> T unMarshal(final String jsonstr, final Class<T> type) throws IOException {
         return MAPPER.readValue(jsonstr, type);
@@ -64,7 +64,7 @@ public final class JsonUtil {
      * @param type target type.
      * @return result object.
      * @throws IOException incase error.
-     * @since SDNO 0.5
+     * @since  
      */
     public static <T> T unMarshal(final String jsonstr, final TypeReference<T> type) throws IOException {
         return MAPPER.readValue(jsonstr, type);
@@ -77,7 +77,7 @@ public final class JsonUtil {
      * @param srcObj source object.
      * @return JSON format string.
      * @throws IOException incase of error.
-     * @since SDNO 0.5
+     * @since  
      */
     public static String marshal(final Object srcObj) throws IOException {
         if(srcObj instanceof JSON) {
@@ -91,7 +91,7 @@ public final class JsonUtil {
      * <br/>
      * 
      * @return parsing mapper
-     * @since SDNO 0.5
+     * @since  
      */
     public static ObjectMapper getMapper() {
         return MAPPER;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ import mockit.integration.junit4.JMockit;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 13-Jun-2016
+ * @version   13-Jun-2016
  */
 @RunWith(JMockit.class)
 public class TestHttpRest {
@@ -65,7 +65,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -75,7 +75,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
@@ -85,7 +85,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Before
     public void setUp() throws Exception {
@@ -95,7 +95,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws java.lang.Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @After
     public void tearDown() throws Exception {
@@ -105,7 +105,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testInitHttpRest() throws Exception {
@@ -128,7 +128,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testInitHttpRestExcpetion() throws Exception {
@@ -154,7 +154,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testInitHttpRestNull() throws Exception {
@@ -169,7 +169,7 @@ public class TestHttpRest {
      * 
      * @throws NoSuchFieldException
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testCreateRestHttpContentExchange() throws NoSuchFieldException, Exception {
@@ -197,7 +197,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetStringRestfulParametes() throws Exception {
@@ -235,7 +235,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testGetStringRestfulParametesRestfulOptions() throws Exception {
@@ -266,7 +266,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -321,7 +321,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testHeadStringRestfulParametes() throws Exception {
@@ -358,7 +358,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -412,7 +412,7 @@ public class TestHttpRest {
      * @param options
      * @return
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     private HttpRest getHttpRest(final RestfulOptions options) throws ServiceException {
         final HttpRest httpRest = new HttpRest();
@@ -439,7 +439,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncGetStringRestfulParametesRestfulAsyncCallback() throws Exception {
@@ -486,7 +486,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncGetStringRestfulParametesRestfulOptionsRestfulAsyncCallback() throws ServiceException {
@@ -533,7 +533,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -585,7 +585,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -638,7 +638,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncPutStringRestfulParametesRestfulAsyncCallback() throws ServiceException {
@@ -685,7 +685,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncPutStringRestfulParametesRestfulOptionsRestfulAsyncCallback() throws Exception {
@@ -732,7 +732,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testPostStringRestfulParametes() throws Exception {
@@ -772,7 +772,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -827,7 +827,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws Exception
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncPostStringRestfulParametesRestfulAsyncCallback() throws Exception {
@@ -875,7 +875,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncPostStringRestfulParametesRestfulOptionsRestfulAsyncCallback() throws ServiceException {
@@ -923,7 +923,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testDeleteStringRestfulParametes() throws ServiceException {
@@ -939,7 +939,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -992,7 +992,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncDeleteStringRestfulParametesRestfulAsyncCallback() throws ServiceException {
@@ -1040,7 +1040,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncDeleteStringRestfulParametesRestfulOptionsRestfulAsyncCallback() throws ServiceException {
@@ -1088,7 +1088,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -1141,7 +1141,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Ignore
     @Test
@@ -1194,7 +1194,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncPatchStringRestfulParametesRestfulAsyncCallback() throws ServiceException {
@@ -1242,7 +1242,7 @@ public class TestHttpRest {
      * <br/>
      * 
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     @Test
     public void testAsyncPatchStringRestfulParametesRestfulOptionsRestfulAsyncCallback() throws ServiceException {

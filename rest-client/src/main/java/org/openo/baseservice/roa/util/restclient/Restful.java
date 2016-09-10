@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,7 +23,7 @@ import org.openo.baseservice.remoteservice.exception.ServiceException;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 28-May-2016
+ * @version   28-May-2016
  */
 public interface Restful {
 
@@ -34,7 +34,7 @@ public interface Restful {
      * @param restParametes: query parameters.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse get(String servicePath, RestfulParametes restParametes) throws ServiceException;
 
@@ -46,7 +46,7 @@ public interface Restful {
      * @param options: request options.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse head(String servicePath, RestfulParametes restParametes, RestfulOptions options)
             throws ServiceException;
@@ -58,7 +58,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse head(String servicePath, RestfulParametes restParametes) throws ServiceException;
 
@@ -70,7 +70,7 @@ public interface Restful {
      * @param options: request options.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse get(String servicePath, RestfulParametes restParametes, RestfulOptions options)
             throws ServiceException;
@@ -82,7 +82,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncGet(String servicePath, RestfulParametes restParametes, RestfulAsyncCallback callback)
             throws ServiceException;
@@ -95,7 +95,7 @@ public interface Restful {
      * @param options: request options.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncGet(String servicePath, RestfulParametes restParametes, RestfulOptions options,
             RestfulAsyncCallback callback) throws ServiceException;
@@ -107,7 +107,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse put(String servicePath, RestfulParametes restParametes) throws ServiceException;
 
@@ -119,7 +119,7 @@ public interface Restful {
      * @param options: request options.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse put(String servicePath, RestfulParametes restParametes, RestfulOptions options)
             throws ServiceException;
@@ -131,7 +131,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncPut(String servicePath, RestfulParametes restParametes, RestfulAsyncCallback callback)
             throws ServiceException;
@@ -144,7 +144,7 @@ public interface Restful {
      * @param options: request options.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncPut(String servicePath, RestfulParametes restParametes, RestfulOptions options,
             RestfulAsyncCallback callback) throws ServiceException;
@@ -156,7 +156,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse post(String servicePath, RestfulParametes restParametes) throws ServiceException;
 
@@ -168,7 +168,7 @@ public interface Restful {
      * @param options: request options.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse post(String servicePath, RestfulParametes restParametes, RestfulOptions options)
             throws ServiceException;
@@ -180,7 +180,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncPost(String servicePath, RestfulParametes restParametes, RestfulAsyncCallback callback)
             throws ServiceException;
@@ -193,7 +193,7 @@ public interface Restful {
      * @param options: request options.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncPost(String servicePath, RestfulParametes restParametes, RestfulOptions options,
             RestfulAsyncCallback callback) throws ServiceException;
@@ -205,7 +205,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse delete(String servicePath, RestfulParametes restParametes) throws ServiceException;
 
@@ -217,7 +217,7 @@ public interface Restful {
      * @param options: request options.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse delete(String servicePath, RestfulParametes restParametes, RestfulOptions options)
             throws ServiceException;
@@ -229,7 +229,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncDelete(String servicePath, RestfulParametes restParametes, RestfulAsyncCallback callback)
             throws ServiceException;
@@ -242,7 +242,7 @@ public interface Restful {
      * @param options: request options.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncDelete(String servicePath, RestfulParametes restParametes, RestfulOptions options,
             RestfulAsyncCallback callback) throws ServiceException;
@@ -254,7 +254,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse patch(String servicePath, RestfulParametes restParametes) throws ServiceException;
 
@@ -266,7 +266,7 @@ public interface Restful {
      * @param options: request options.
      * @return response.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     RestfulResponse patch(String servicePath, RestfulParametes restParametes, RestfulOptions options)
             throws ServiceException;
@@ -278,7 +278,7 @@ public interface Restful {
      * @param restParametes: request parameters.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncPatch(String servicePath, RestfulParametes restParametes, RestfulAsyncCallback callback)
             throws ServiceException;
@@ -291,7 +291,7 @@ public interface Restful {
      * @param options: request options.
      * @param callback: response callback method.
      * @throws ServiceException
-     * @since SDNO 0.5
+     * @since  
      */
     void asyncPatch(String servicePath, RestfulParametes restParametes, RestfulOptions options,
             RestfulAsyncCallback callback) throws ServiceException;

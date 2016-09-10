@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016, Huawei Technologies Co., Ltd.
+ * Copyright 2016 Huawei Technologies Co., Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -27,7 +27,7 @@ import org.openo.baseservice.encrypt.cbb.inf.AbstractCipherFactory;
  * </p>
  * 
  * @author
- * @version SDNO 0.5 08-Jun-2016
+ * @version   08-Jun-2016
  */
 public final class CipherCreator {
 
@@ -41,7 +41,7 @@ public final class CipherCreator {
      * private
      * </p>
      * 
-     * @since SDNO 0.5
+     * @since  
      */
     private CipherCreator() {
 
@@ -52,7 +52,7 @@ public final class CipherCreator {
      * <br/>
      * 
      * @return
-     * @since SDNO 0.5
+     * @since  
      */
     public static CipherCreator instance() {
         return instance;
@@ -63,7 +63,7 @@ public final class CipherCreator {
      * <br/>
      * 
      * @return cipher instance with default key.
-     * @since SDNO 0.5
+     * @since  
      */
     public AbstractCipher create() {
         return factory.createCipherManager();
@@ -75,7 +75,7 @@ public final class CipherCreator {
      * 
      * @param key the key to be used for encryption and decryption.
      * @return cipher instance with specified key.
-     * @since SDNO 0.5
+     * @since  
      */
     public AbstractCipher create(final String key) {
         return factory.createCipherManager(key);
@@ -86,7 +86,7 @@ public final class CipherCreator {
      * <br/>
      * 
      * @param factory cipher factory.
-     * @since SDNO 0.5
+     * @since  
      */
     public void setFactory(final AbstractCipherFactory factory) {
         this.factory = factory;
