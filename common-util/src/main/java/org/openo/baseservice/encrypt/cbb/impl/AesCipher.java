@@ -68,9 +68,9 @@ public class AesCipher implements AbstractCipher {
      * Constructor<br/>
      * <p>
      * </p>
-     * 
-     * @since 
-     * @param ckey: key.
+     * Creates key.
+     * @param key
+     * @since   
      */
     public AesCipher(final String key) {
         super();

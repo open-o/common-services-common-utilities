@@ -52,7 +52,7 @@ public class RegisterServiceListener implements ServletContextListener {
 
         for(File tempFile : fileList) {
             String fileName = tempFile.getName();
-            if (fileName.substring(fileName.lastIndexOf(".") + 1).equalsIgnoreCase(JSON)) {
+            if (fileName.substring(fileName.lastIndexOf('.') + 1).equalsIgnoreCase(JSON)) {
                 LOGGER.info("begin to initialize the service file" + tempFile.getAbsolutePath());
                 
                 /** now because ZTE do not provide the service bus.commont this code first.
@@ -71,6 +71,4 @@ public class RegisterServiceListener implements ServletContextListener {
         // TODO Auto-generated method stub
 
     }
-
-
 }
