@@ -63,6 +63,7 @@
         <!--
         <module>winery</module>
         -->
+	<module>wso2bpel-ext</module>
     </modules>
 
 	<dependencyManagement>
