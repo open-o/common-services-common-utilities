@@ -18,7 +18,7 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.openo.common-services.common-utilities</groupId>
+        <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
         <artifactId>distribution</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -103,7 +103,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.openo.common-services.common-utilities</groupId>
+                                    <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
                                     <artifactId>wso2bpel-mgr</artifactId>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
@@ -122,7 +122,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.openo.common-services.common-utilities</groupId>
+                                    <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
                                     <artifactId>wso2bpel-mgr</artifactId>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
@@ -145,7 +145,7 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks name="distribution">
+                            <target name="distribution">
                                 <copy todir="target/assembly/linux64/lib">
                                     <fileset dir="../../wso2bpel-mgr/lib">
                                         <include name="*" />
@@ -156,7 +156,7 @@
                                         <include name="*" />
                                     </fileset>
                                 </copy>
-                                <tar destfile="${version.output}/${packagename}-${project.version}.tar.gz" longfile="posix" compression="gzip">
+                                <tar destfile="${version.output}/${packagename}-${project.version}-linux64.tar.gz" longfile="posix" compression="gzip">
                                     <tarfileset dir="target/assembly/linux64" filemode="0644" dirmode="0755">
                                         <exclude name="**/*.sh"/>
                                     </tarfileset>
@@ -164,12 +164,12 @@
                                         <include name="**/*.sh"/>
                                     </tarfileset>
                                 </tar>
-                                <attachartifact file="${version.output}/${packagename}-${project.version}.tar.gz" classifier="linux64" type="tar.gz"/>
-                                <zip destfile="${version.output}/${packagename}-${project.version}.zip" update="true">
+                                <attachartifact file="${version.output}/${packagename}-${project.version}-linux64.tar.gz" classifier="linux64" type="tar.gz"/>
+                                <zip destfile="${version.output}/${packagename}-${project.version}-win64.zip" update="true">
                                     <zipfileset dir="target/assembly/win64" includes="**"/>
                                 </zip>
-                                <attachartifact file="${version.output}/${packagename}-${project.version}.zip" classifier="win64" type="zip"/>
-                            </tasks>
+                                <attachartifact file="${version.output}/${packagename}-${project.version}-win64.zip" classifier="win64" type="zip"/>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
@@ -179,7 +179,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.openo.common-services.common-utilities</groupId>
+            <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
             <artifactId>wso2bpel-mgr</artifactId>
             <version>${project.version}</version>
         </dependency>
