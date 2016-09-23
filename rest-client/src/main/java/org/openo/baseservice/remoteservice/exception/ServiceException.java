@@ -114,6 +114,21 @@ public class ServiceException extends Exception {
         this.setId(id);
         this.setHttpCode(httpCode);
     }
+    
+    /**
+     * Constructor<br/>
+     * <p>
+     * the exception include the httpcode and message.
+     * </p>
+     * 
+     * @since
+     * @param httpCode http code.
+     * @param message details.
+     */
+    public ServiceException(final int httpCode, final String message) {
+        super(message);
+        this.setHttpCode(httpCode);
+    }
 
     /**
      * Constructor<br/>
