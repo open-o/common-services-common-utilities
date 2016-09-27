@@ -30,126 +30,119 @@ import org.openo.baseservice.util.impl.SystemEnvVariablesFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
- * Provide the service register cbb for common use.
- * <br/>
+ * Provide the service register cbb for common use. <br/>
  * <p>
  * </p>
  * 
  * @author
- * @version  
+ * @version
  */
 public class RegisterService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RegisterService.class);
 
-    private static final String BUS_CONFIGURE_FILE = "/etc/microservice.ini";
-    
-    private static final String BUS_SERVICE_URL = "/openoapi/microservices/v1/services";
-
-    private static final String BUS_ADDRESS_KEY = "msb.address";
-    
     private static String busPath = null;
 
     /**
      * Constructor<br/>
      * <p>
      * </p>
-     * @throws IOException 
      * 
-     * @since  
+     * @throws IOException
+     * 
+     * @since
      */
     private RegisterService() {
     }
 
     /**
-     * register the micro service.
-     * <br/>
+     * register the micro service. <br/>
      * 
-     * @param jsonPath: the service json object to register to the bus.
-     * @param createOrUpdate: true, create and update the old ip port. false, create and delete the
-     *            old one;
+     * @param jsonPath:
+     *            the service json object to register to the bus.
+     * @param createOrUpdate:
+     *            true, create and update the old ip port. false, create and
+     *            delete the old one;
      * @return
      * @throws IOException
-     * @since  
+     * @since
      */
     public static Response registerService(String jsonPath, boolean createOrUpdate) throws IOException {
-        
-        String serviceInfo = getServiceModel(jsonPath);
-        
-        WebClient client = initializeClient();
-        
-        client.type("application/json");
-        
-        client.accept("application/json");
-        
-        client.path(BUS_SERVICE_URL);
-        
-        client.query("createOrUpdate", createOrUpdate);
 
-        LOGGER.info("Connecting bus address : " + busPath + BUS_SERVICE_URL);
-        
-        return client.invoke("POST", serviceInfo);
-        
+        String serviceInfo = getServiceModel(jsonPath);
+
+        WebClient client = initializeClient();
+
+        client.type(BusConstant.APPLICATION_JSON_HEADER);
+
+        client.accept(BusConstant.APPLICATION_JSON_HEADER);
+
+        client.path(BusConstant.BUS_SERVICE_URL);
+
+        client.query(BusConstant.CREATE_OR_UPDATE, createOrUpdate);
+
+        LOGGER.info("Connecting bus address : " + busPath + BusConstant.BUS_SERVICE_URL);
+
+        return client.invoke(BusConstant.POST_METHOD, serviceInfo);
+
     }
 
     /**
-     * get the service's model. and return it as a string ;
-     * <br/>
+     * get the service's model. and return it as a string ; <br/>
      * 
      * @param jsonPath
      * @return
-     * @since   
+     * @since
      */
     private static String getServiceModel(String jsonPath) {
-        
+
         String serviceInfo = "";
-        
+
         try {
             LOGGER.info("begin to read file micro service json " + jsonPath);
-            
+
             FileInputStream busFile = new FileInputStream(jsonPath);
-            
+
             int size = busFile.available();
-            
+
             byte[] buffer = new byte[size];
-            
+
             busFile.read(buffer);
-            
+
             busFile.close();
-            
+
             serviceInfo = new String(buffer);
             LOGGER.info("finished to read micro service json file. ");
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             LOGGER.error("Read the micro service json file error :", ex);
         }
         return serviceInfo;
     }
+
     /**
-     * initialize the bus ip and port.
-     * <br/>
+     * initialize the bus ip and port. <br/>
      * 
      * @return
      * @throws IOException
-     * @since   
+     * @since
      */
     private static String getBusAdderss() throws IOException {
 
         LOGGER.info("begin to get the bus baseurl.");
         FileInputStream busFile = null;
-        String url = "msb.openo.org:80";
+        String url = BusConstant.MICROSERVICE_DEFAULT;
 
-        String filePath = SystemEnvVariablesFactory.getInstance().getAppRoot() + BUS_CONFIGURE_FILE;
+        String filePath = SystemEnvVariablesFactory.getInstance().getAppRoot() + BusConstant.BUS_CONFIGURE_FILE;
         LOGGER.info("bus base url file:" + filePath);
-        
+
         Properties properties = new Properties();
 
         try {
             busFile = new FileInputStream(filePath);
             properties.load(busFile);
-            url = properties.getProperty(BUS_ADDRESS_KEY);
-        } catch(IOException e) {
+            url = properties.getProperty(BusConstant.BUS_ADDRESS_KEY);
+        } catch (IOException e) {
             if (busFile != null) {
                 busFile.close();
             }
@@ -157,19 +150,18 @@ public class RegisterService {
         }
 
         LOGGER.info("initialize the bus baseurl is: " + url);
-        return "http://" + url;
+        return BusConstant.HTTP_HEAD + url;
     }
-    
+
     /**
-     * get the bus's client's address. and initialize the web client.
-     * <br/>
+     * get the bus's client's address. and initialize the web client. <br/>
      * 
      * @return
-     * @throws IOException 
-     * @since   
+     * @throws IOException
+     * @since
      */
     private static WebClient initializeClient() throws IOException {
-        
+
         final List<Object> providers = new ArrayList<Object>();
 
         JacksonJsonProvider jacksonJsonProvider = new JacksonJsonProvider();

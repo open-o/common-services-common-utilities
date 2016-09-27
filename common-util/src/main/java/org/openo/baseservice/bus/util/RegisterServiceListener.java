@@ -17,6 +17,7 @@
 package org.openo.baseservice.bus.util;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -26,42 +27,37 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Initialize the service register listener.
- * <br/>
- * <p>  
+ * Initialize the service register listener. <br/>
+ * <p>
  * </p>
  * 
  * @author
- * @version  
+ * @version
  */
 public class RegisterServiceListener implements ServletContextListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RegisterServiceListener.class);
-    
-    private static final String JSON = "json";
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
-        String servicePath = SystemEnvVariablesFactory.getInstance().getAppRoot() + "/etc/microservice";
+        String servicePath = SystemEnvVariablesFactory.getInstance().getAppRoot() + BusConstant.MICROSERVICE_PATH;
         LOGGER.info("microservices json file path is" + servicePath);
 
         File file = new File(servicePath);
 
         File[] fileList = file.listFiles();
 
-        for(File tempFile : fileList) {
+        for (File tempFile : fileList) {
             String fileName = tempFile.getName();
-            if (fileName.substring(fileName.lastIndexOf('.') + 1).equalsIgnoreCase(JSON)) {
+            if (fileName.substring(fileName.lastIndexOf('.') + 1).equalsIgnoreCase(BusConstant.JSON)) {
                 LOGGER.info("begin to initialize the service file" + tempFile.getAbsolutePath());
-                
-                /** now because ZTE do not provide the service bus.commont this code first.
+
                 try {
                     RegisterService.registerService(tempFile.getAbsolutePath(), true);
-                } catch(IOException e) {
+                } catch (IOException e) {
                     LOGGER.error("Faile to register the service file :" + tempFile.getPath() + ", exception:" + e);
                 }
-                */
             }
         }
     }
