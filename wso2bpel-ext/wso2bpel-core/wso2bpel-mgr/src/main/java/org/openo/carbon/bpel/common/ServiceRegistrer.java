@@ -24,6 +24,10 @@ public class ServiceRegistrer implements Runnable {
   private static final Logger LOG = LoggerFactory.getLogger(ServiceRegistrer.class);
   private final ServiceRegisterEntity wso2bpelEntity = new ServiceRegisterEntity();
 
+  public ServiceRegistrer() {
+    initServiceEntity();
+  }
+
   @Override
   public void run() {
     LOG.info("start wso2bpelEntity microservice register");

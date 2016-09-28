@@ -1,4 +1,4 @@
-﻿#
+#
 #
 # Copyright 2016 [ZTE] and others.
 #
@@ -28,7 +28,7 @@ port=8312
 #JAVA_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$port,server=y,suspend=n"
 echo @JAVA_OPTS@ $JAVA_OPTS
 
-class_path="$RUNHOME/:dependency\*:$RUNHOME/wso2bpel-service.jar"
+class_path="$RUNHOME/:$RUNHOME/lib/*:$RUNHOME/wso2bpel-service.jar"
 echo @class_path@ $class_path
 
 "$JAVA" $JAVA_OPTS -classpath "$class_path" org.openo.carbon.bpel.Wso2BpelApplication server "$RUNHOME/conf/wso2bpel.yml"
