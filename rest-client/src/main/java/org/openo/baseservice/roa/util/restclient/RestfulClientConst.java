@@ -35,7 +35,7 @@ public class RestfulClientConst {
 
     public static final String ENCODING = "UTF-8";
 
-    public static final String SERVER_KEY_NAME = "defaulServer";
+    public static final String SERVER_KEY_NAME = "defaultServer";
 
     public static final String HOST_KEY_NAME = "host";
 
