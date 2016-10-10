@@ -127,7 +127,7 @@ public class RegisterService {
      * @throws IOException
      * @since
      */
-    private static String getBusAdderss() throws IOException {
+    private static String getBusAddress() throws IOException {
 
         LOGGER.info("begin to get the bus baseurl.");
         FileInputStream busFile = null;
@@ -169,7 +169,7 @@ public class RegisterService {
         providers.add(jacksonJsonProvider);
 
         if (busPath == null) {
-            busPath = getBusAdderss();
+            busPath = getBusAddress();
         }
 
         return WebClient.create(busPath, providers);
