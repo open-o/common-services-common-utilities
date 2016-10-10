@@ -1,5 +1,5 @@
 {
-    "defaulServer":
+    "defaultServer":
     {
         "host":"10.10.10.10",
         "port":"443",
