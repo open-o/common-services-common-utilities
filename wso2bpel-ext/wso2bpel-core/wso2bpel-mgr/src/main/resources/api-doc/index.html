@@ -45,14 +45,13 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "/swagger.json";
+        url = "/openoapi/wso2bpel/v1/swagger.json";
       }
       window.swaggerUi = new SwaggerUi({
         url: url,
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
-        
           if(typeof initOAuth == "function") {
             /*
             initOAuth({

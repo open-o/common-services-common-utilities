@@ -107,7 +107,7 @@
                                     <artifactId>wso2bpel-mgr</artifactId>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>${linux64outputdir}</outputDirectory>
+                                    <outputDirectory>${linux64outputdir}/wso2bps-ext</outputDirectory>
                                     <destFileName>wso2bpel-service.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
@@ -126,7 +126,7 @@
                                     <artifactId>wso2bpel-mgr</artifactId>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>${win64outputdir}</outputDirectory>
+                                    <outputDirectory>${win64outputdir}/wso2bps-ext</outputDirectory>
                                     <destFileName>wso2bpel-service.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
@@ -139,6 +139,32 @@
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>unzip-wso2bps</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="unzip-wso2bps">
+                                <unzip src="lib/wso2bps-3.5.0.zip" dest="target/assembly/wso2bps">
+                                    <patternset>
+                                        <exclude name="**/*.bat" />
+                                    </patternset>
+                                </unzip>
+                                <copy todir="${linux64outputdir}/wso2bps">
+                                    <fileset dir="target/assembly/wso2bps/wso2bps-3.5.0">
+                                        <exclude name="**/*.bat" />
+                                    </fileset>
+                                </copy>
+                                <copy todir="${win64outputdir}/wso2bps">
+                                    <fileset dir="target/assembly/wso2bps/wso2bps-3.5.0">
+                                        <exclude name="**/*.sh" />
+                                    </fileset>
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>distribution</id>
                         <phase>package</phase>
                         <goals>
@@ -146,12 +172,12 @@
                         </goals>
                         <configuration>
                             <target name="distribution">
-                                <copy todir="target/assembly/linux64/lib">
+                                <copy todir="target/assembly/linux64/wso2bps-ext/lib">
                                     <fileset dir="../../wso2bpel-mgr/lib">
                                         <include name="*" />
                                     </fileset>
                                 </copy>
-                                <copy todir="target/assembly/win64/lib">
+                                <copy todir="target/assembly/win64/wso2bps-ext/lib">
                                     <fileset dir="../../wso2bpel-mgr/lib">
                                         <include name="*" />
                                     </fileset>

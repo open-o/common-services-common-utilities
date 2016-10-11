@@ -14,21 +14,19 @@
 # limitations under the License.
 #
 
+
 DIRNAME=`dirname $0`
 RUNHOME=`cd $DIRNAME/; pwd`
 echo @RUNHOME@ $RUNHOME
 
-echo @JAVA_HOME@ $JAVA_HOME
-JAVA="$JAVA_HOME/bin/java"
-echo @JAVA@ $JAVA
+echo "### Starting wso2bps";
+cd wso2bps
+$RUNHOME/wso2bps/bin/wso2server.sh &
+cd $RUNHOME
 
-JAVA_OPTS="-Xms50m -Xmx128m"
-port=8312
-#JAVA_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$port,server=y,suspend=n"
-echo @JAVA_OPTS@ $JAVA_OPTS
 
-class_path="$RUNHOME/:$RUNHOME/lib/*:$RUNHOME/wso2bpel-service.jar"
-echo @class_path@ $class_path
-
-"$JAVA" $JAVA_OPTS -classpath "$class_path" org.openo.carbon.bpel.Wso2BpelApplication server "$RUNHOME/conf/wso2bpel.yml"
+echo "\n\n### Starting wso2bps-ext"
+cd wso2bps-ext
+$RUNHOME/wso2bps-ext/bin/startup.sh &
+echo "### Starting wso2 end...";
 

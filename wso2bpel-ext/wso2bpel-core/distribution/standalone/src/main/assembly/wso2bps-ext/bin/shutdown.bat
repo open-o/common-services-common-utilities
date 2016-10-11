@@ -15,15 +15,20 @@
 @REM
 
 @echo off
-title wso2
+title stopping wso2bpel-service
 
-set RUNHOME=%~dp0
-echo ##RUNHOME %RUNHOME%
+set HOME=%~dp0
+set Main_Class="org.openo.carbon.bpel.Wso2BpelApplication"
 
+echo ================== wso2bpel-service info =============================================
+echo HOME=$HOME
+echo Main_Class=%Main_Class%
+echo ===============================================================================
 
-echo ### Starting wso2bps
-start /D %RUNHOME%wso2bps bin\wso2server.bat
+echo ### Stopping wso2bpel-service
+cd /d %HOME%
 
-echo ### Starting wso2bps-ext
-start /D %RUNHOME%wso2bps-ext bin\startup.bat 
-
+for /f "delims=" %%i in ('"%JAVA_HOME%\bin\jcmd"') do (
+  call find_kill_process "%%i" %Main_Class%
+)
+exit

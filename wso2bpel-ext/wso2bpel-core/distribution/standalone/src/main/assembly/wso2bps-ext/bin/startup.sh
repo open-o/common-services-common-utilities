@@ -18,13 +18,17 @@ DIRNAME=`dirname $0`
 RUNHOME=`cd $DIRNAME/; pwd`
 echo @RUNHOME@ $RUNHOME
 
-echo "### Shutdown wso2bps";
-cd wso2bps
-$RUNHOME/wso2bps/shutdown.sh &
-cd $RUNHOME
+echo @JAVA_HOME@ $JAVA_HOME
+JAVA="$JAVA_HOME/bin/java"
+echo @JAVA@ $JAVA
 
+JAVA_OPTS="-Xms50m -Xmx128m"
+port=8312
+#JAVA_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$port,server=y,suspend=n"
+echo @JAVA_OPTS@ $JAVA_OPTS
 
-echo "\n\n### Shutdown wso2bps-ext"
-cd wso2bps-ext
-$RUNHOME/wso2bps-ext/bin/shutdown.sh &
-echo "### Shutdown wso2 end...";
+class_path="$RUNHOME/:$RUNHOME/../lib/*:$RUNHOME/../wso2bpel-service.jar"
+echo @class_path@ $class_path
+
+"$JAVA" $JAVA_OPTS -classpath "$class_path" org.openo.carbon.bpel.Wso2BpelApplication server "$RUNHOME/../conf/wso2bpel.yml"
+
