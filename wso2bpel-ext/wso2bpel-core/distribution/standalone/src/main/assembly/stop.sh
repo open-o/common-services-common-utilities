@@ -20,7 +20,7 @@ echo @RUNHOME@ $RUNHOME
 
 echo "### Shutdown wso2bps";
 cd wso2bps
-$RUNHOME/wso2bps/shutdown.sh &
+$RUNHOME/wso2bps/bin/shutdown.sh &
 cd $RUNHOME
 
 
