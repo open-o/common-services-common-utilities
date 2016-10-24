@@ -147,9 +147,6 @@
                         <configuration>
                             <target name="unzip-wso2bps">
                                 <unzip src="lib/wso2bps-3.5.0.zip" dest="target/assembly/wso2bps">
-                                    <patternset>
-                                        <exclude name="**/*.bat" />
-                                    </patternset>
                                 </unzip>
                                 <copy todir="${linux64outputdir}/wso2bps">
                                     <fileset dir="target/assembly/wso2bps/wso2bps-3.5.0">
