@@ -29,7 +29,34 @@ public class Wso2BpelConfiguration extends Configuration {
   private String apiDescription = "Wso2bps REST API";
   @NotNull
   private DataSourceFactory database = new DataSourceFactory();
+  
+  @NotEmpty
+  private String msbServerAddr;
+  
+  @NotEmpty
+  private String wso2Host;
 
+  @NotEmpty
+  private String wso2HostPort;
+  
+  @NotEmpty
+  private String wso2AuthUserName;
+  
+  @NotEmpty
+  private String wso2AuthPassword;
+  
+  @NotEmpty
+  private String wso2Path;
+  
+  @NotEmpty
+  private String wso2UploadFilePath;
+  
+  @NotEmpty
+  private String wso2SslJksFile;
+  
+  @NotEmpty
+  private String wso2SslJksPassword;
+  
   @JsonProperty
   public String getTemplate() {
     return template;
@@ -39,9 +66,6 @@ public class Wso2BpelConfiguration extends Configuration {
   public String getApiDescription() {
     return apiDescription;
   }
-  
-  @NotEmpty
-  private String msbServerAddr;
 
   @JsonProperty("database")
   public DataSourceFactory getDataSourceFactory() {
@@ -66,6 +90,86 @@ public class Wso2BpelConfiguration extends Configuration {
   @JsonProperty
   public void setMsbServerAddr(String msbServerAddr) {
     this.msbServerAddr = msbServerAddr;
+  }
+  
+  @JsonProperty
+  public String getWso2Host() {
+    return wso2Host;
+  }
+
+  @JsonProperty
+  public void setWso2Host(String wso2Host) {
+    this.wso2Host = wso2Host;
+  }
+  
+  @JsonProperty
+  public String getWso2HostPort() {
+    return wso2HostPort;
+  }
+
+  @JsonProperty
+  public void setWso2HostPort(String wso2HostPort) {
+    this.wso2HostPort = wso2HostPort;
+  }
+
+  @JsonProperty
+  public String getWso2AuthUserName() {
+    return wso2AuthUserName;
+  }
+
+  @JsonProperty
+  public void setWso2AuthUserName(String wso2AuthUserName) {
+    this.wso2AuthUserName = wso2AuthUserName;
+  }
+
+  @JsonProperty
+  public String getWso2AuthPassword() {
+    return wso2AuthPassword;
+  }
+
+  @JsonProperty
+  public void setWso2AuthPassword(String wso2AuthPassword) {
+    this.wso2AuthPassword = wso2AuthPassword;
+  }
+
+  @JsonProperty
+  public String getWso2Path() {
+    return wso2Path;
+  }
+
+  @JsonProperty
+  public void setWso2Path(String wso2Path) {
+    this.wso2Path = wso2Path;
+  }
+
+  @JsonProperty
+  public String getWso2UploadFilePath() {
+    return wso2UploadFilePath;
+  }
+
+  @JsonProperty
+  public void setWso2UploadFilePath(String wso2UploadFilePath) {
+    this.wso2UploadFilePath = wso2UploadFilePath;
+  }
+
+  @JsonProperty
+  public String getWso2SslJksFile() {
+    return wso2SslJksFile;
+  }
+
+  @JsonProperty
+  public void setWso2SslJksFile(String wso2SslJksFile) {
+    this.wso2SslJksFile = wso2SslJksFile;
+  }
+
+  @JsonProperty
+  public String getWso2SslJksPassword() {
+    return wso2SslJksPassword;
+  }
+
+  @JsonProperty
+  public void setWso2SslJksPassword(String wso2SslJksPassword) {
+    this.wso2SslJksPassword = wso2SslJksPassword;
   }
 
 }

@@ -147,18 +147,15 @@
                         <configuration>
                             <target name="unzip-wso2bps">
                                 <unzip src="lib/wso2bps-3.5.0.zip" dest="target/assembly/wso2bps">
-                                    <patternset>
-                                        <exclude name="**/*.bat"/>
-                                    </patternset>
                                 </unzip>
                                 <copy todir="${linux64outputdir}/wso2bps">
                                     <fileset dir="target/assembly/wso2bps/wso2bps-3.5.0">
-                                        <exclude name="**/*.bat"/>
+                                        <exclude name="**/*.bat" />
                                     </fileset>
                                 </copy>
                                 <copy todir="${win64outputdir}/wso2bps">
                                     <fileset dir="target/assembly/wso2bps/wso2bps-3.5.0">
-                                        <exclude name="**/*.sh"/>
+                                        <exclude name="**/*.sh" />
                                     </fileset>
                                 </copy>
                             </target>
@@ -174,12 +171,12 @@
                             <target name="distribution">
                                 <copy todir="target/assembly/linux64/wso2bps-ext/lib">
                                     <fileset dir="../../wso2bpel-mgr/lib">
-                                        <include name="*"/>
+                                        <include name="*" />
                                     </fileset>
                                 </copy>
                                 <copy todir="target/assembly/win64/wso2bps-ext/lib">
                                     <fileset dir="../../wso2bpel-mgr/lib">
-                                        <include name="*"/>
+                                        <include name="*" />
                                     </fileset>
                                 </copy>
                                 <tar destfile="${version.output}/${packagename}-${project.version}-linux64.tar.gz" longfile="posix" compression="gzip">
@@ -211,3 +208,4 @@
         </dependency>
     </dependencies>  
 </project>
+

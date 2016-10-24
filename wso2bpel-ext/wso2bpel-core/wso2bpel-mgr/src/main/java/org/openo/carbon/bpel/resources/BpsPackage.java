@@ -67,7 +67,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.media.multipart.file.FileDataBodyPart;
 import org.wso2.carbon.bpel.stub.upload.types.UploadedFileItem;
-import org.openo.carbon.bpel.config.ConfigManager;
+import org.openo.carbon.bpel.common.Config;
 import org.openo.carbon.bpel.util.JsonUtil;
 import org.openo.carbon.bpel.util.Xml2JsonUtil;
 
@@ -78,7 +78,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Path("/openoapi/wso2bpel/v1")
+@Path("/")
 @Api(tags = {"wso2 bpel api"})
 public class BpsPackage {
 
@@ -101,16 +101,13 @@ public class BpsPackage {
   private synchronized String getConfig(String key) {
     if (configMap == null) {
       configMap = new HashMap<String, String>();
-      String uploadFilePath = ConfigManager.getInstance().getProperty("wso2.uploadfile.path");
-      String jksFile = ConfigManager.getInstance().getProperty("wso2.ssl.jks.file");
-      String trustStorePassword =
-          ConfigManager.getInstance().getProperty("wso2.ssl.trustStorePassword");
-      String httpUsername =
-          ConfigManager.getInstance().getProperty("wso2.http.authenticator.username");
-      String httpPassword =
-          ConfigManager.getInstance().getProperty("wso2.http.authenticator.password");
-      String host = ConfigManager.getInstance().getProperty("wso2.host");
-      String port = ConfigManager.getInstance().getProperty("wso2.http.port");
+      String uploadFilePath = Config.getConfigration().getWso2UploadFilePath();
+      String jksFile = Config.getConfigration().getWso2SslJksFile();
+      String trustStorePassword = Config.getConfigration().getWso2SslJksPassword();
+      String httpUsername = Config.getConfigration().getWso2AuthUserName();
+      String httpPassword = Config.getConfigration().getWso2AuthPassword();
+      String host = Config.getConfigration().getWso2Host();
+      String port = Config.getConfigration().getWso2HostPort();
       configMap.put("uploadFilePath", uploadFilePath);
       configMap.put("jksFile", jksFile);
       configMap.put("trustStorePassword", trustStorePassword);
@@ -122,7 +119,7 @@ public class BpsPackage {
     if (configMap.containsKey(key)) {
       return configMap.get(key);
     } else {
-      return ConfigManager.getInstance().getProperty(key);
+      return "";
     }
   }
 

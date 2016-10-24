@@ -20,6 +20,15 @@ template: Hello, %s!
 
 msbServerAddr: http://127.0.0.1:80
 
+wso2Host: localhost
+wso2HostPort: 9443
+wso2AuthUserName: admin
+wso2AuthPassword: admin
+wso2Path: /home/common-services/wso2/wso2bps
+wso2UploadFilePath: /home/common-services/wso2/wso2bps/tmp/bpeluploads
+wso2SslJksFile: /home/common-services/wso2/wso2bps/repository/resources/security/wso2carbon.jks
+wso2SslJksPassword: wso2carbon
+
 
 # use the simple server factory if you only want to run on a single port
 #server:
