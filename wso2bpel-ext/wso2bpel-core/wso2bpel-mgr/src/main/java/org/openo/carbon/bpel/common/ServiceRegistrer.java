@@ -63,7 +63,7 @@ public class ServiceRegistrer implements Runnable {
     wso2bpelEntity.setProtocol("REST");
     wso2bpelEntity.setVersion("v1");
     wso2bpelEntity.setUrl("/openoapi/wso2bpel/v1");
-    wso2bpelEntity.setSingleNode(null, "8101", 0);
+    wso2bpelEntity.setSingleNode(Config.getConfigration().getServiceIp(), "8101", 0);
     wso2bpelEntity.setVisualRange("1");
   }
 
