@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.db.DataSourceFactory;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 public class Wso2BpelConfiguration extends Configuration {
@@ -56,6 +57,9 @@ public class Wso2BpelConfiguration extends Configuration {
   
   @NotEmpty
   private String wso2SslJksPassword;
+  
+  @Valid
+  private String serviceIp;
   
   @JsonProperty
   public String getTemplate() {
@@ -172,4 +176,13 @@ public class Wso2BpelConfiguration extends Configuration {
     this.wso2SslJksPassword = wso2SslJksPassword;
   }
 
+  @JsonProperty
+  public String getServiceIp() {
+    return serviceIp;
+  }
+
+  @JsonProperty
+  public void setServiceIp(String serviceIp) {
+    this.serviceIp = serviceIp;
+  }
 }
