@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
         <artifactId>wso2bpelparent-lite</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
         <relativePath>../wso2bpelparent-lite</relativePath>
     </parent>
 

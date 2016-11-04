@@ -19,7 +19,7 @@
     <parent>
        <groupId>org.openo.common-services.common-utilities</groupId>
        <artifactId>common-setting</artifactId>
-       <version>1.0.0-SNAPSHOT</version>
+       <version>1.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>commonlib-restclient</artifactId>
     <properties>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.openo.common-services.common-utilities</groupId>
             <artifactId>commonlib-cbb</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>
