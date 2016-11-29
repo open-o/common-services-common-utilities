@@ -27,7 +27,7 @@
     <groupId>org.openo.common-services.common-utilities</groupId>
     <artifactId>common-setting</artifactId>
     <packaging>pom</packaging>
-    <name>common-setting</name>
+    <name>common-services-common-utilities</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
