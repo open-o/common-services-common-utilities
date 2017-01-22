@@ -29,6 +29,7 @@
     <packaging>pom</packaging>
 
     <modules>
+		<module>BPEL4RESTLight</module>
         <module>wso2bpel-mgr</module>
         <module>distribution</module>
     </modules>
