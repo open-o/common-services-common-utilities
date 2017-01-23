@@ -62,6 +62,7 @@
         <module>winery</module>
         -->
         <module>wso2bpel-ext</module>
+	<module>dropwizard-ioc-container</module>
     </modules>
 
     <dependencyManagement>
