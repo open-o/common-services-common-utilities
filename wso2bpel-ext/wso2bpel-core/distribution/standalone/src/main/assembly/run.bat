@@ -23,7 +23,10 @@ echo ##RUNHOME %RUNHOME%
 
 echo ### Starting wso2bps
 start /D %RUNHOME%wso2bps bin\wso2server.bat
+cd /D %RUNHOME%wso2bps-ext\bin
 
 echo ### Starting wso2bps-ext
-start /D %RUNHOME%wso2bps-ext bin\startup.bat 
+start startup.bat
+
+cd /D %RUNHOME%
 

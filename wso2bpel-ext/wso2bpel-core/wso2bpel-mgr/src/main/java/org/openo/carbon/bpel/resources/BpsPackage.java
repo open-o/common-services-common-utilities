@@ -33,8 +33,10 @@ import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -86,6 +88,46 @@ public class BpsPackage {
 
   public static final int STATUS_SUCCESS = 1;
   public static final int STATUS_FAIL = 0;
+  /**
+   * 无错误
+   */
+  public static final int ERROR_CODE_NOERROR = 0;
+  /**
+   * 不支持的文件类型
+   */
+  public static final int ERROR_CODE_PACKAGE_UNSUPPORED_FILE = 10001;
+  /**
+   * 同名的包正在操作中
+   */
+  public static final int ERROR_CODE_PACKAGE_STATUS_BUSY = 10002;
+  /**
+   * 包名重复
+   */
+  public static final int ERROR_CODE_PACKAGE_DUPLICATED_NAME = 10003;
+  /**
+   * 未获取到包部署的信息
+   */
+  public static final int ERROR_CODE_PACKAGE_DEPLOY_INFORMATION_IS_LOST = 10004;
+  /**
+   * 卸载包失败
+   */
+  public static final int ERROR_CODE_PACKAGE_UNDEPLOY_FAILED = 10005;
+  /**
+   * 包不存在
+   */
+  public static final int ERROR_CODE_PACKAGE_NOTEXISTS = 10006;
+  /**
+   * 服务运行时异常
+   */
+  public static final int ERROR_CODE_RUNTIME_EXCEPTION = 20001;
+  /**
+   * Axis运行时异常
+   */
+  public static final int ERROR_CODE_RUNTIME_EXCEPTION_AXIS = 20002;
+  /**
+   * IO运行时异常
+   */
+  public static final int ERROR_CODE_RUNTIME_EXCEPTION_IO = 20003;
 
   public static Set<String> packageNameSet = new HashSet<String>();
 
@@ -158,6 +200,7 @@ public class BpsPackage {
           throws IOException {
     Map<String, Object> map = new LinkedHashMap<String, Object>();
     String errorMessage = "unkown";
+    int errorCode = ERROR_CODE_NOERROR;
 
     String fileName = fileDetail.getFileName();
     String fullName = getConfig("uploadFilePath") + "/" + fileName;
@@ -167,9 +210,11 @@ public class BpsPackage {
       if (fileName.endsWith(".zip")) {
         packageName = fileName.substring(0, fileName.length() - 4);
       } else {
+    	  errorCode = ERROR_CODE_PACKAGE_UNSUPPORED_FILE;
         throw new Exception("Only support *.zip file.");
       }
       if (!lockPackageName(packageName)) {
+    	  errorCode = ERROR_CODE_PACKAGE_STATUS_BUSY;
         throw new Exception("Package " + packageName + " is operating.");
       }
       FileUtils.copyInputStreamToFile(fileInputStream, file);
@@ -188,20 +233,26 @@ public class BpsPackage {
       authenticator.setPreemptiveAuthentication(true);
 
       map.putAll(bpsDeployPackage(fileName, fullName, packageName, authenticator));
-
       map.put("status", STATUS_SUCCESS);
       map.put("message", "success");
       return map;
     } catch (AxisFault e) {
       errorMessage = e.getLocalizedMessage();
+      errorCode = ERROR_CODE_RUNTIME_EXCEPTION_AXIS;
       log.error(e.getMessage(), e);
       e.printStackTrace();
     } catch (IOException e) {
       errorMessage = e.getLocalizedMessage();
+      errorCode = ERROR_CODE_RUNTIME_EXCEPTION_IO;
       log.error(e.getMessage(), e);
       e.printStackTrace();
     } catch (Throwable e) {
       errorMessage = e.getLocalizedMessage();
+		if (e instanceof BpsServiceException) {
+			errorCode = ((BpsServiceException) e).getErrorCode();
+		} else {
+			errorCode = ERROR_CODE_RUNTIME_EXCEPTION;
+		}
       log.error(e.getMessage(), e);
       e.printStackTrace();
     } finally {
@@ -209,6 +260,7 @@ public class BpsPackage {
         unlockPackageName(packageName);
       }
     }
+    map.put("errorCode", errorCode);
     map.put("status", STATUS_FAIL);
     map.put("message", errorMessage);
     return map;
@@ -219,9 +271,9 @@ public class BpsPackage {
       HttpTransportProperties.Authenticator authenticator)
           throws JsonParseException, JsonMappingException, IOException, AxisFault, Exception {
     Map<String, Object> map = new HashMap<String, Object>();
-    Map deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName);
+    Map deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName, "");
     if (deployedPackageInfoMap.get("packageName") != null) {
-      throw new Exception("Package " + deployedPackageInfoMap.get("packageName")
+      throw new BpsServiceException(ERROR_CODE_PACKAGE_DUPLICATED_NAME,"Package " + deployedPackageInfoMap.get("packageName")
           + " exist, please undeploy it first.");
     }
     OMElement element = deployPackage(fileName, fullName, authenticator);
@@ -230,7 +282,7 @@ public class BpsPackage {
     long timeout = 60 * 1000L;
     long timeStart = System.currentTimeMillis();
     while (System.currentTimeMillis() - timeStart < timeout) {
-      deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName);
+      deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName, "");
       if (deployedPackageInfoMap.get("packageName") == null) {
         Thread.sleep(2000);
       } else {
@@ -238,7 +290,7 @@ public class BpsPackage {
       }
     }
     if (deployedPackageInfoMap.get("packageName") == null) {
-      throw new Exception(
+      throw new BpsServiceException(ERROR_CODE_PACKAGE_DEPLOY_INFORMATION_IS_LOST,
           "Package " + packageName + " deploy failed or deploy information is lost.");
     }
     map.put("packageName", deployedPackageInfoMap.get("packageName"));
@@ -277,9 +329,10 @@ public class BpsPackage {
   @ApiOperation(value = "delete", response = Map.class)
   @Timed
   public Map<String, Object> delete(@PathParam("packageName") String packageName,
-      @PathParam("param") String param, @Context HttpServletRequest request) {
+      @Context HttpServletRequest request) {
     Map<String, Object> map = new LinkedHashMap<String, Object>();
     String errorMessage = "unkown";
+    int errorCode = ERROR_CODE_NOERROR;
     try {
       if (!lockPackageName(packageName)) {
         throw new Exception("Package " + packageName + " is operating.");
@@ -294,8 +347,8 @@ public class BpsPackage {
       List<String> auth = new ArrayList<String>();
       auth.add(Authenticator.BASIC);
       authenticator.setAuthSchemes(auth);
-      authenticator.setUsername("admin");
-      authenticator.setPassword("admin");
+      authenticator.setUsername(getConfig("httpUsername"));
+      authenticator.setPassword(getConfig("httpPassword"));
       authenticator.setPreemptiveAuthentication(true);
 
       map.putAll(bpsUndeployPackage(packageName, authenticator));
@@ -303,10 +356,16 @@ public class BpsPackage {
       return map;
     } catch (AxisFault e) {
       errorMessage = e.getLocalizedMessage();
+      errorCode = ERROR_CODE_RUNTIME_EXCEPTION_AXIS;
       log.error(e.getMessage(), e);
       e.printStackTrace();
     } catch (Throwable e) {
       errorMessage = e.getLocalizedMessage();
+		if (e instanceof BpsServiceException) {
+			errorCode = ((BpsServiceException) e).getErrorCode();
+		} else {
+			errorCode = ERROR_CODE_RUNTIME_EXCEPTION;
+		}
       log.error(e.getMessage(), e);
       e.printStackTrace();
     } finally {
@@ -314,6 +373,7 @@ public class BpsPackage {
         unlockPackageName(packageName);
       }
     }
+    map.put("errorCode", errorCode);
     map.put("status", STATUS_FAIL);
     map.put("message", errorMessage);
     return map;
@@ -324,15 +384,15 @@ public class BpsPackage {
       HttpTransportProperties.Authenticator authenticator)
           throws JsonParseException, JsonMappingException, IOException, AxisFault, Exception {
     Map<String, Object> map = new HashMap<String, Object>();
-    Map deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName);
+    Map deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName, "");
     if (deployedPackageInfoMap.get("packageName") == null) {
-      throw new Exception("Package " + deployedPackageInfoMap.get("packageName")
+      throw new BpsServiceException(ERROR_CODE_PACKAGE_NOTEXISTS,"Package " + deployedPackageInfoMap.get("packageName")
           + " does not exist, please deploy it first.");
     }
     OMElement element = undeployPackage(authenticator, packageName);
-    deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName);
+    deployedPackageInfoMap = getDeployedPackageInfo(authenticator, packageName, "");
     if (deployedPackageInfoMap.get("packageName") != null) {
-      throw new Exception(
+      throw new BpsServiceException(ERROR_CODE_PACKAGE_UNDEPLOY_FAILED,
           "Package " + deployedPackageInfoMap.get("packageName") + " undeploy failed.");
     }
     map.put("status", STATUS_SUCCESS);
@@ -363,73 +423,145 @@ public class BpsPackage {
     OMElement res = serviceClient.sendReceive(method);
     return res;
   }
+  
+  @SuppressWarnings({"rawtypes", "unchecked"})
+  private Map getFullDeployedPackageInfo(HttpTransportProperties.Authenticator authenticator,
+	      String packageName, String page) throws Exception {
+	    String result;
+	    String jsonTemplate =
+	        "{'listDeployedPackagesPaginated':{'page':'${page}','packageSearchString':'${searchString}'}}";
+	    Map jsonParamMap = new HashMap();
+	    jsonParamMap.put("page", page);
+	    jsonParamMap.put("searchString", packageName);
+	    Object params = getParams(jsonTemplate, jsonParamMap);
+	    result = BpsProcess.invokeWsdl("https://" + getConfig("host") + ":" + getConfig("port")
+	        + "/services/BPELPackageManagementService?wsdl", params, authenticator);
+	    Map<String, Object> processMap = JsonUtil.json2Bean(result, Map.class);
+	    return processMap;
+	  }
 
   @SuppressWarnings({"rawtypes", "unchecked"})
   private Map getDeployedPackageInfo(HttpTransportProperties.Authenticator authenticator,
-      String packageName) throws Exception {
-    Map resultMap = new HashMap();
+	      String packageName, String page) throws Exception {
+	    Map resultMap = new HashMap();
+	    Map<String, Object> processMap = getFullDeployedPackageInfo(authenticator, packageName, page);
+	    Object packages = ((Map) processMap.get("deployedPackagesPaginated")).get("package");
+	    Map deployedPackage = null;
+	    if (packages instanceof List) {
+	      for (Iterator iter = ((List) packages).iterator(); iter.hasNext();) {
+	        Map packageMap = (Map) iter.next();
+	        String deployedPackageName = (String) packageMap.get("name");
+	        if (deployedPackageName.equals(packageName)) {
+	          deployedPackage = packageMap;
+	          break;
+	        }
+	      }
+	    } else if (packages instanceof Map) {
+	      String deployedPackageName = (String) ((Map) packages).get("name");
+	      if (deployedPackageName.equals(packageName)) {
+	        deployedPackage = (Map) packages;
+	      }
+	    }
+	    if (deployedPackage != null) {
+	      String fullPackageName = null;
+	      String pid = null;
+	      Object versions = ((Map) deployedPackage.get("versions")).get("version");
+	      Map lastestVersion = null;
+	      if (versions instanceof List) {
+	        for (Iterator iter = ((List) versions).iterator(); iter.hasNext();) {
+	          Map version = (Map) iter.next();
+	          if (version.get("isLatest").equals("true")) {
+	            lastestVersion = version;
+	          }
+	        }
+	      } else if (versions instanceof Map) {
+	        lastestVersion = (Map) versions;
+	      }
+	      fullPackageName = (String) ((Map) ((Map) lastestVersion.get("processes")).get("process"))
+	          .get("packageName");
+	      pid = (String) ((Map) ((Map) lastestVersion.get("processes")).get("process")).get("pid");
+	      resultMap.put("packageName", fullPackageName);
+	      resultMap.put("pid", pid);
+	    }
+	    return resultMap;
+}
 
-    String result;
-    String jsonTemplate =
-        "{'listDeployedPackagesPaginated':{'page':'','packageSearchString':'${searchString}'}}";
-    Map jsonParamMap = new HashMap();
-    jsonParamMap.put("searchString", packageName);
-    Object params = getParams(jsonTemplate, jsonParamMap);
-    result = BpsProcess.invokeWsdl("https://" + getConfig("host") + ":" + getConfig("port")
-        + "/services/BPELPackageManagementService?wsdl", params, authenticator);
-    System.out.println(result);
-    Map<String, Object> processMap = JsonUtil.json2Bean(result, Map.class);
-    Object packages = ((Map) processMap.get("deployedPackagesPaginated")).get("package");
-    Map deployedPackage = null;
-    if (packages instanceof List) {
-      for (Iterator iter = ((List) packages).iterator(); iter.hasNext();) {
-        Map packageMap = (Map) iter.next();
-        String deployedPackageName = (String) packageMap.get("name");
-        if (deployedPackageName.equals(packageName)) {
-          deployedPackage = packageMap;
-          break;
-        }
-      }
-    } else if (packages instanceof Map) {
-      String deployedPackageName = (String) ((Map) packages).get("name");
-      if (deployedPackageName.equals(packageName)) {
-        deployedPackage = (Map) packages;
-      }
-    }
-    if (deployedPackage != null) {
-      String fullPackageName = null;
-      String pid = null;
-      Object versions = ((Map) deployedPackage.get("versions")).get("version");
-      Map lastestVersion = null;
-      if (versions instanceof List) {
-        for (Iterator iter = ((List) versions).iterator(); iter.hasNext();) {
-          Map version = (Map) iter.next();
-          if (version.get("isLatest").equals("true")) {
-            lastestVersion = version;
-          }
-        }
-      } else if (versions instanceof Map) {
-        lastestVersion = (Map) versions;
-      }
-      fullPackageName = (String) ((Map) ((Map) lastestVersion.get("processes")).get("process"))
-          .get("packageName");
-      pid = (String) ((Map) ((Map) lastestVersion.get("processes")).get("process")).get("pid");
-      resultMap.put("packageName", fullPackageName);
-      resultMap.put("pid", pid);
-    }
-    return resultMap;
-  }
 
   @SuppressWarnings({"rawtypes", "unchecked"})
   public static Map<String, Object> getParams(String jsonTemplate, Map<String, Object> paramMap)
       throws JsonParseException, JsonMappingException, IOException {
     String json = jsonTemplate.replaceAll("'", "\"");
-    for (Iterator iter = paramMap.keySet().iterator(); iter.hasNext();) {
-      String key = (String) iter.next();
-      String value = paramMap.get(key).toString().replaceAll("\"", "\\\\\"");
-      json = json.replaceAll("\\$\\{" + key + "\\}", value);
-    }
+		for (Iterator iter = paramMap.keySet().iterator(); iter.hasNext();) {
+			String key = (String) iter.next();
+			String value = "";
+			if (paramMap.get(key) != null) {
+				value = paramMap.get(key).toString().replaceAll("\"", "\\\\\"");
+			}
+			json = json.replaceAll("\\$\\{" + key + "\\}", value);
+		}
     return JsonUtil.json2Bean(json, Map.class);
+  }
+  
+  @GET
+  @Path(value = "listPackages")
+  @Produces(value = MediaType.APPLICATION_JSON)
+  @ApiOperation(value = "list packages", response = Map.class)
+  @Timed
+  public Map<String, Object> listPackages(@QueryParam("page") String page,
+	      @QueryParam("searchString") String searchString, @Context HttpServletRequest request)
+          throws IOException {
+    Map<String, Object> map = new LinkedHashMap<String, Object>();
+    String errorMessage = "unkown";
+    int errorCode = ERROR_CODE_NOERROR;
+    String packageName = null;
+    try {
+      System.setProperty("javax.net.ssl.trustStore", "*.keystore");
+      System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");
+      System.setProperty("javax.net.ssl.trustStore", getConfig("jksFile"));
+      System.setProperty("javax.net.ssl.trustStorePassword", getConfig("trustStorePassword"));
+
+      HttpTransportProperties.Authenticator authenticator =
+          new HttpTransportProperties.Authenticator();
+      List<String> auth = new ArrayList<String>();
+      auth.add(Authenticator.BASIC);
+      authenticator.setAuthSchemes(auth);
+      authenticator.setUsername(getConfig("httpUsername"));
+      authenticator.setPassword(getConfig("httpPassword"));
+      authenticator.setPreemptiveAuthentication(true);
+
+      map.putAll(getFullDeployedPackageInfo(authenticator,searchString,page));
+
+      map.put("status", STATUS_SUCCESS);
+      map.put("message", "success");
+      return map;
+    } catch (AxisFault e) {
+      errorMessage = e.getLocalizedMessage();
+      errorCode = ERROR_CODE_RUNTIME_EXCEPTION_AXIS;
+      log.error(e.getMessage(), e);
+      e.printStackTrace();
+    } catch (IOException e) {
+      errorMessage = e.getLocalizedMessage();
+      errorCode = ERROR_CODE_RUNTIME_EXCEPTION_IO;
+      log.error(e.getMessage(), e);
+      e.printStackTrace();
+    } catch (Throwable e) {
+			if (e instanceof BpsServiceException) {
+				errorCode = ((BpsServiceException) e).getErrorCode();
+			} else {
+				errorCode = ERROR_CODE_RUNTIME_EXCEPTION;
+			}
+      errorMessage = e.getLocalizedMessage();
+      log.error(e.getMessage(), e);
+      e.printStackTrace();
+    } finally {
+      if (packageName != null) {
+        unlockPackageName(packageName);
+      }
+    }
+    map.put("errorCode", errorCode);
+    map.put("status", STATUS_FAIL);
+    map.put("message", errorMessage);
+    return map;
   }
 
   @SuppressWarnings("rawtypes")

@@ -25,9 +25,9 @@ wso2Host: localhost
 wso2HostPort: 9443
 wso2AuthUserName: admin
 wso2AuthPassword: admin
-wso2Path: ../wso2bps
-wso2UploadFilePath: ../wso2bps/tmp/bpeluploads
-wso2SslJksFile: ../wso2bps/repository/resources/security/wso2carbon.jks
+wso2Path: ../../wso2bps
+wso2UploadFilePath: ../../wso2bps/tmp/bpeluploads
+wso2SslJksFile: ../../wso2bps/repository/resources/security/wso2carbon.jks
 wso2SslJksPassword: wso2carbon
 
 
