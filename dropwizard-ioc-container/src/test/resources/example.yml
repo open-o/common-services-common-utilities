@@ -1,0 +1,8 @@
+server:
+  type: simple
+  rootPath: '/service/*'
+  applicationContextPath: /
+  connector:
+    type: http
+    port: 45673
+  
