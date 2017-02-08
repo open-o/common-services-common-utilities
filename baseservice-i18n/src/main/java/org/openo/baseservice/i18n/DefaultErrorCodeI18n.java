@@ -1,0 +1,362 @@
+/**
+ * Copyright 2016 ZTE Corporation.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.openo.baseservice.i18n;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+
+public final class DefaultErrorCodeI18n implements ErrorCodeI18n {
+
+  static final Logger logger = LoggerFactory.getLogger(DefaultErrorCodeI18n.class);
+
+  /**
+   * 单例
+   */
+  private static DefaultErrorCodeI18n singleton;
+  /**
+   * 创建单例的锁
+   */
+  private static final Lock lock = new ReentrantLock();
+
+  /**
+   * 所有的错误码配置集合
+   */
+  private Map<Integer, ErrorItemImpl> errorItems;
+
+  private DefaultErrorCodeI18n() {
+    try {
+      init();
+    } catch (Exception e) {
+      logger.error("init ErrorCodeI18n failed.", e);
+    }
+  }
+
+  /**
+   * 扫描errorcode文件，并生成errorItem集合
+   *
+   * @throws Exception
+   */
+  @SuppressWarnings("unchecked")
+  private void init() throws Exception {
+    // 扫描文件，并构建临时的ErrorItem集合
+    final ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
+    final Map<Integer, ErrorItemImpl> errorItems =
+        new HashMap<Integer, DefaultErrorCodeI18n.ErrorItemImpl>();
+    JsonResourceScanner.findErrorCodePaths().forEach(path -> {
+      HashMap<String, Object> fileValues = null;
+      try (InputStream ins = systemClassLoader.getResourceAsStream(path)) {
+        fileValues = I18nJsonUtil.getInstance().readFromJson(ins, HashMap.class);
+        logger.info("load errorcode file success: " + path);
+      } catch (IOException ex) {
+        logger.info("load errorcode file failed: " + path);
+        logger.info("load errorcode file failed: " + systemClassLoader.getResource(path).toString(),
+            ex);
+        return;
+      }
+      List<?> errcodes = (List<?>) fileValues.get("errcodes");
+      if (errcodes == null) {
+        logger.info("none errcodes field in: " + path);
+        return;
+      }
+
+      // 提取名称和locale
+      String fileName = null;
+      int i = path.lastIndexOf("/");
+      if (i > -1) {
+        fileName = path.substring(i + 1);
+      } else {
+        fileName = path;
+      }
+      i = fileName.indexOf("-errorcode-");
+      String localeSrc = fileName.substring(i + 11, fileName.lastIndexOf("."));
+      if (localeSrc.isEmpty()) {
+        logger.info("parse errorcode file failed: locale is null");
+        return;
+      }
+
+      String[] ss = localeSrc.replace("-", "_").split("_");
+      String tempLocale = null;
+      if (ss.length == 1) {
+        tempLocale = new Locale(ss[0]).toString();
+      } else if (ss.length == 2) {
+        tempLocale = new Locale(ss[0], ss[1]).toString();
+      } else {
+        logger.info("parse i18n file failed: locale is error \"" + localeSrc + "\"");
+        return;
+      }
+      String locale = tempLocale;
+      errcodes.forEach(errorcode -> {
+        // {"code":"00053501","level":"INFO","label":"拓扑定制文件无效。"}
+        Map<String, String> errorConfig = (Map<String, String>) errorcode;
+        Integer code = Integer.valueOf(errorConfig.get("code"));
+        String level = errorConfig.get("level");
+        String label = errorConfig.get("label");
+
+        ErrorItemImpl errorItem = errorItems.get(Integer.valueOf(code));
+        if (errorItem == null) {
+          errorItem = new ErrorItemImpl();
+          errorItem.errorCode = code.intValue();
+          errorItem.level = ErrorCodeLevelUtil.transfer2Int(level);
+          errorItems.put(code, errorItem);
+        }
+        errorItem.addLabel(locale, label);
+      });
+    });
+
+    // 生成正式的errorItem集合
+    errorItems.forEach((code, errorItem) -> {
+      errorItem.unmodifiable();
+    });
+    this.errorItems = Collections.unmodifiableMap(errorItems);
+  }
+
+
+  /**
+   * 获取单例
+   *
+   * @return
+   */
+  static DefaultErrorCodeI18n getInstance() {
+    if (singleton == null) {
+      lock.lock();
+      try {
+        if (singleton == null) {
+          singleton = new DefaultErrorCodeI18n();
+        }
+      } finally {
+        lock.unlock();
+      }
+    }
+    return singleton;
+  }
+
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.zte.ums.zenap.i18n.ErrorCodeI18n#getErrorItem(int)
+   */
+  @Override
+  public Optional<ErrorItem> getErrorItem(int errorCode) {
+    return Optional.ofNullable(errorItems.get(Integer.valueOf(errorCode)));
+  }
+
+
+  /**
+   * 错误码类
+   *
+   * @author 10163976
+   */
+  public static class ErrorItemImpl implements ErrorItem {
+    /**
+     * 错误码
+     */
+    private int errorCode;
+
+    /**
+     * 错误级别
+     */
+    private int level;
+
+    /**
+     * Map<locale ,value> 错误信息描述
+     */
+    private Map<String, String> labels = new HashMap<String, String>();
+
+    /**
+     * 该对象对应的json字符串
+     */
+    private String jsonString = null;
+
+    @Override
+    public int getErrorCode() {
+      return errorCode;
+    }
+
+    @Override
+    public int getLevel() {
+      return level;
+    }
+
+    public Map<String, String> getLabels() {
+      return labels;
+    }
+
+    /**
+     * 设置不可变更
+     */
+    private void unmodifiable() {
+      if (labels != null) {
+        labels = Collections.unmodifiableMap(labels);
+      }
+    }
+
+    /**
+     * 添加标签
+     *
+     * @param locale 方言
+     * @param label 标签值
+     */
+    private synchronized void addLabel(String locale, String label) {
+      labels.put(locale, label);
+    }
+
+    /**
+     * @param theLocale
+     * @return
+     */
+    @Override
+    public String getLabel(Locale theLocale) {
+      if (theLocale == null) {
+        return null;
+      }
+      return labels.get(I18nLocaleTransfer.transfer(theLocale, labels.keySet()));
+    }
+
+    @Override
+    public String getCanonicalLabels(int errorCode) {
+      String jsonString = this.jsonString;
+      if (jsonString == null) {
+        ErrorItem2 errorItem2 = new ErrorItem2();
+        errorItem2.setErrorCode(this.errorCode);
+        errorItem2.setLevel(ErrorCodeLevelUtil.transfer2String(this.errorCode));
+        errorItem2.setErrlabels(labels);
+        try {
+          jsonString = I18nJsonUtil.getInstance().writeToJson(errorItem2);
+        } catch (Exception e) {
+          logger.info("getCanonicalLabels failed from with param errorCode " + errorCode
+              + " and this errorCode " + this.errorCode, e);
+          return null;
+        }
+        this.jsonString = jsonString;
+      }
+      return jsonString;
+    }
+
+  }
+
+  protected static class ErrorItem2 {
+    /**
+     * 错误码
+     */
+    private int errorCode;
+
+    /**
+     * 错误级别
+     */
+    private String level;
+
+    /**
+     * Map<locale ,value> 错误信息描述
+     */
+    private Map<String, String> errlabels;
+
+    public ErrorItem2() {
+
+    }
+
+    public int getErrorCode() {
+      return errorCode;
+    }
+
+    public void setErrorCode(int errorCode) {
+      this.errorCode = errorCode;
+    }
+
+    public String getLevel() {
+      return level;
+    }
+
+    public void setLevel(String level) {
+      this.level = level;
+    }
+
+    public Map<String, String> getErrlabels() {
+      return errlabels;
+    }
+
+    public void setErrlabels(Map<String, String> errlabels) {
+      this.errlabels = errlabels;
+    }
+  }
+
+  protected static class ErrorCodeLevelUtil {
+    /**
+     * 错误级别，同 javax.swing.JOptionPane.ERROR_MESSAGE 的值相同
+     */
+    public static final int ERROR_LEVEL = javax.swing.JOptionPane.ERROR_MESSAGE;
+
+    /**
+     * 级别，同 javax.swing.JOptionPane.WARNING_MESSAGE 的值相同
+     */
+    public static final int WARN_LEVEL = javax.swing.JOptionPane.WARNING_MESSAGE;
+
+    /**
+     * 错误级别，同 javax.swing.JOptionPane.INFORMATION_MESSAGE 的值相同
+     */
+    public static final int INFO_LEVEL = javax.swing.JOptionPane.INFORMATION_MESSAGE;
+
+    /**
+     * int转换为字符串形式
+     *
+     * @param errorCode
+     * @return
+     */
+    protected static String transfer2String(int errorCode) {
+      switch (errorCode) {
+        case ERROR_LEVEL:
+          return "ERROR";
+        case INFO_LEVEL:
+          return "INFO";
+        case WARN_LEVEL:
+          return "WARN";
+      }
+      return null;
+    }
+
+    /**
+     * 字符串转换为int形式
+     *
+     * @param level
+     * @return
+     */
+    protected static int transfer2Int(String level) {
+      switch (level) {
+        case "ERROR":
+          return ERROR_LEVEL;
+        case "INFO":
+          return INFO_LEVEL;
+        case "WARN":
+          return WARN_LEVEL;
+      }
+      return -1;
+    }
+
+  }
+
+}
