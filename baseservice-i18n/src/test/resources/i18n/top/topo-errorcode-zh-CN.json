@@ -1,0 +1,8 @@
+﻿﻿{
+"errcodes":[
+{"code": "00053501", "level": "INFO", "label": "拓扑定制文件无效。"
+},
+{
+"code": "00053530", "level": "WARN", "label": "命令参数不一致。"}
+]
+}
