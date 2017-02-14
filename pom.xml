@@ -27,7 +27,7 @@
     <groupId>org.openo.common-services.common-utilities</groupId>
     <artifactId>common-setting</artifactId>
     <packaging>pom</packaging>
-    <name>common-setting</name>
+    <name>common-services-common-utilities</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,10 +58,10 @@
     <modules>
         <module>common-util</module>
         <module>rest-client</module>
-        <!--
-        <module>winery</module>
-        -->
+        <module>baseservice-i18n</module>		
+        <!--<module>winery</module>-->
         <module>wso2bpel-ext</module>
+	<module>dropwizard-ioc-container</module>
     </modules>
 
     <dependencyManagement>
