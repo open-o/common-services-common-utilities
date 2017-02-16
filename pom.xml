@@ -56,13 +56,12 @@
     </scm>
 
     <modules>
+	    <module>baseservice-i18n</module>
         <module>common-util</module>
+		<module>dropwizard-ioc-container</module>
+		<module>logging-sdk</module>
         <module>rest-client</module>
-        <!--
-        <module>winery</module>
-        -->
-        <module>wso2bpel-ext</module>
-	<module>dropwizard-ioc-container</module>
+        <module>wso2bpel-ext</module>	
     </modules>
 
     <dependencyManagement>
