@@ -55,7 +55,7 @@ public class SysLogMessage extends LogMessage {
     this.setLogType(LogConst.SYSLOG_TYPE);
 
     this.logName = logName;
-    this.setLocale("logName", logName);
+    this.set("logName", logName);
 
     this.rank = rank;
     this.set("rank", rank);
@@ -64,7 +64,7 @@ public class SysLogMessage extends LogMessage {
     this.set("hostname", hostname);
 
     this.detail = detail;
-    this.setLocale("detail", detail);
+    this.set("detail", detail);
 
     this.logStartDate = logStartDate;
     this.set("logStartDate", Facitility.dateFormat(logStartDate));

@@ -25,11 +25,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.codehaus.jackson.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Facitility {
@@ -50,7 +48,7 @@ public class Facitility {
       json = w.toString();
       w.close();
     } catch (IOException e) {
-      LOGGER.error("IOException" + e);
+      LOGGER.error("IOException", e);
     }
     return json;
   }
@@ -61,7 +59,7 @@ public class Facitility {
       Map<String, String> maps = objectMapper.readValue(json, Map.class);
       return maps;
     } catch (Exception e) {
-      LOGGER.error("IOException" + e);
+      LOGGER.error("IOException", e);
       return null;
     }
   }
@@ -106,33 +104,34 @@ public class Facitility {
   }
 
   public static String checkRequiredJsonParam(String jsonParam, String key) {
-    StringBuilder errMsg = new StringBuilder();
-    try {
-      ObjectMapper mapper = new ObjectMapper();
-      JsonNode jsonValue;
-
-
-      jsonValue = mapper.readTree(jsonParam.toString());
-      Iterator<Entry<String, JsonNode>> elements = jsonValue.fields();
-      while (elements.hasNext()) {
-        Entry<String, JsonNode> node = elements.next();
-        String childValue = node.getValue().asText();
-        if (childValue == null || "".equals(childValue)) {
-          errMsg.append(
-              "Both Chinese and English descriptions of this field cannot be empty: " + key + "/n");
-          break;
-        }
-      }
-
-      return errMsg.toString();
-    } catch (JsonProcessingException e) {
-      // TODO Auto-generated catch block
-      LOGGER.error("JsonProcessingException" + e);
-      return errMsg.toString();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      LOGGER.error("IOException" + e);
-      return errMsg.toString();
-    }
+    return "";
+//    StringBuilder errMsg = new StringBuilder();
+//    try {
+//      ObjectMapper mapper = new ObjectMapper();
+//      JsonNode jsonValue;
+//
+//
+//      jsonValue = mapper.readTree(jsonParam.toString());
+//      Iterator<Entry<String, JsonNode>> elements = jsonValue.fields();
+//      while (elements.hasNext()) {
+//        Entry<String, JsonNode> node = elements.next();
+//        String childValue = node.getValue().asText();
+//        if (childValue == null || "".equals(childValue)) {
+//          errMsg.append(
+//              "Both Chinese and English descriptions of this field cannot be empty: " + key + "/n");
+//          break;
+//        }
+//      }
+//
+//      return errMsg.toString();
+//    } catch (JsonProcessingException e) {
+//      // TODO Auto-generated catch block
+//      LOGGER.error("JsonProcessingException" , e);
+//      return errMsg.toString();
+//    } catch (IOException e) {
+//      // TODO Auto-generated catch block
+//      LOGGER.error("IOException" , e);
+//      return errMsg.toString();
+//    }
   }
 }

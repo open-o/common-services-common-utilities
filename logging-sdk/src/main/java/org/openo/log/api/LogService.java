@@ -100,7 +100,7 @@ public class LogService {
 
   public long recordSecLog(SecLogMessage logMessage) {
     // TODO Auto-generated method stub
-    LOGGER.info("receive a insert sec log message");
+    //LOGGER.info("receive a insert sec log message");
     InsertLogHandler insertLogHandler = new InsertLogHandler();
     if (insertLogHandler.checkSecLog((SecLogMessage) logMessage)) {
 
@@ -117,7 +117,7 @@ public class LogService {
 
 
   public long recordSysLog(SysLogMessage logMessage) {
-    LOGGER.info("receive a insert sys log message");
+    //LOGGER.info("receive a insert sys log message");
     InsertLogHandler insertLogHandler = new InsertLogHandler();
     if (insertLogHandler.checkSysLog((SysLogMessage) logMessage)) {
 
