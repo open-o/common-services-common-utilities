@@ -45,8 +45,6 @@
                         <arg>-Xlint:deprecation</arg>
                         <arg>-bootclasspath</arg>
                         <arg>${env.JAVA_HOME}/jre/lib/rt.jar</arg>
-                        <arg>-extdirs</arg> 
-                        <arg>${project.basedir}/lib</arg>
                     </compilerArgs> 
                 </configuration>
             </plugin>
@@ -216,5 +214,190 @@
             <scope>test</scope>
         </dependency>
         <!-- UT end -->
+		
+		
+<dependency>
+    <groupId>org.apache.ws.commons.axiom.wso2</groupId>
+    <artifactId>axiom</artifactId>
+    <version>1.2.11.wso2v4</version>
+</dependency>
+		<dependency>
+			<groupId>axion.wso2</groupId>
+			<artifactId>axion</artifactId>
+			<version>1.0.0.M3-dev-wso2v1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2.wso2</groupId>
+			<artifactId>axis2</artifactId>
+			<version>1.6.1.wso2v10</version>
+		</dependency>
+<dependency>
+    <groupId>commons-beanutils</groupId>
+    <artifactId>commons-beanutils</artifactId>
+    <version>1.9.2</version>
+</dependency>
+<dependency>
+    <groupId>commons-codec.wso2</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.4.0.wso2v1</version>
+</dependency>
+<dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.2.1</version>
+</dependency>
+<dependency>
+    <groupId>commons-fileupload.wso2</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.2.2.wso2v1</version>
+</dependency>
+<dependency>
+    <groupId>commons-httpclient.wso2</groupId>
+    <artifactId>commons-httpclient</artifactId>
+    <version>3.1.0.wso2v2</version>
+</dependency>
+<dependency>
+    <groupId>commons-io.wso2</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.0.0.wso2v1</version>
+</dependency>
+<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.5</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.2</version>
+</dependency>
+<dependency>
+    <groupId>commons-logging</groupId>
+    <artifactId>commons-logging</artifactId>
+    <version>1.0.4</version>
+</dependency>
+<dependency>
+    <groupId>net.sf.ezmorph</groupId>
+    <artifactId>ezmorph</artifactId>
+    <version>1.0.6</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents.wso2</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.2.5.wso2v1</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents.wso2</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.3.0.wso2v1</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpmime</artifactId>
+    <version>4.3.1</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-annotations</artifactId>
+    <version>2.5.0</version>
+</dependency>
+<dependency>
+    <groupId>javassist</groupId>
+    <artifactId>javassist</artifactId>
+    <version>3.3.GA</version>
+</dependency>
+<dependency>
+    <groupId>javax.annotation</groupId>
+    <artifactId>javax.annotation-api</artifactId>
+    <version>1.2</version>
+</dependency>
+<dependency>
+    <groupId>javax.ws.rs</groupId>
+    <artifactId>javax.ws.rs-api</artifactId>
+    <version>2.0.1</version>
+</dependency>
+<dependency>
+    <groupId>jdom</groupId>
+    <artifactId>jdom</artifactId>
+    <version>0.7</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.media</groupId>
+    <artifactId>jersey-media-jaxb</artifactId>
+    <version>2.25</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jersey.media</groupId>
+    <artifactId>jersey-media-multipart</artifactId>
+    <version>2.22.2</version>
+</dependency>
+<dependency>
+    <groupId>net.sf.json-lib</groupId>
+    <artifactId>json-lib</artifactId>
+    <version>2.4</version>
+</dependency>
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.16</version>
+</dependency>
+<dependency>
+    <groupId>com.jgoodies</groupId>
+    <artifactId>looks</artifactId>
+    <version>2.2.1</version>
+</dependency>
+<dependency>
+    <groupId>org.jvnet.mimepull</groupId>
+    <artifactId>mimepull</artifactId>
+    <version>1.9.3</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.neethi.wso2</groupId>
+    <artifactId>neethi</artifactId>
+    <version>2.0.4.wso2v4</version>
+</dependency>
+<dependency>
+    <groupId>org.wso2.carbon</groupId>
+    <artifactId>org.wso2.carbon.bpel.stub</artifactId>
+    <version>4.2.1</version>
+</dependency>
+<dependency>
+    <groupId>org.wso2.securevault</groupId>
+    <artifactId>org.wso2.securevault</artifactId>
+    <version>1.0.0-wso2v2</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.xmlbeans</groupId>
+    <artifactId>xmlbeans</artifactId>
+    <version>2.4.0</version>
+</dependency>
+<dependency>
+    <groupId>wsdl4j.wso2</groupId>
+    <artifactId>wsdl4j</artifactId>
+    <version>1.6.2.wso2v4</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.ws.commons.schema.wso2</groupId>
+    <artifactId>XmlSchema</artifactId>
+    <version>1.4.7.wso2v2</version>
+</dependency>
+
+        <dependency>
+            <groupId>com.eviware.soapui</groupId>
+            <artifactId>soapui</artifactId>
+            <version>1.7.1</version>
+            <type>jar</type>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/soapui-1.7.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.eviware.soapui</groupId>
+            <artifactId>soapui-xmlbeans</artifactId>
+            <version>1.7</version>
+            <type>jar</type>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/soapui-xmlbeans-1.7.jar</systemPath>
+        </dependency>
+
     </dependencies>
 </project>

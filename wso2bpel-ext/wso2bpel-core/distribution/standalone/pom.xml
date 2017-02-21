@@ -103,6 +103,22 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
+                                    <groupId>org.wso2.bps</groupId>
+                                    <artifactId>bpel-eventlistener</artifactId>
+                                    <version>2.1.2</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${linux64outputdir}/wso2bps/repository/components/lib</outputDirectory>
+                                    <destFileName>bpel-eventlistener-2.1.2.jar</destFileName>
+                                </artifactItem>
+								<artifactItem>
+                                    <groupId>mysql</groupId>
+                                    <artifactId>mysql-connector-java</artifactId>
+                                    <version>5.1.39</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${linux64outputdir}/wso2bps/repository/components/lib</outputDirectory>
+                                    <destFileName>mysql-connector-java-5.1.39-bin.jar</destFileName>
+                                </artifactItem>
+								<artifactItem>
                                     <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
                                     <artifactId>wso2bpel-mgr</artifactId>
                                     <type>jar</type>
@@ -121,6 +137,22 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <artifactItems>
+							    <artifactItem>
+                                    <groupId>org.wso2.bps</groupId>
+                                    <artifactId>bpel-eventlistener</artifactId>
+                                    <version>2.1.2</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${win64outputdir}/wso2bps/repository/components/lib</outputDirectory>
+                                    <destFileName>bpel-eventlistener-2.1.2.jar</destFileName>
+                                </artifactItem>
+								<artifactItem>
+                                    <groupId>mysql</groupId>
+                                    <artifactId>mysql-connector-java</artifactId>
+                                    <version>5.1.39</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${win64outputdir}/wso2bps/repository/components/lib</outputDirectory>
+                                    <destFileName>mysql-connector-java-5.1.39-bin.jar</destFileName>
+                                </artifactItem>
                                 <artifactItem>
                                     <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
                                     <artifactId>wso2bpel-mgr</artifactId>
@@ -169,7 +201,7 @@
                         </goals>
                         <configuration>
                             <target name="distribution">
-                                <copy todir="target/assembly/linux64/wso2bps-ext/lib">
+                                <!--copy todir="target/assembly/linux64/wso2bps-ext/lib">
                                     <fileset dir="../../wso2bpel-mgr/lib">
                                         <include name="*"/>
                                     </fileset>
@@ -178,7 +210,7 @@
                                     <fileset dir="../../wso2bpel-mgr/lib">
                                         <include name="*"/>
                                     </fileset>
-                                </copy>
+                                </copy-->
                                 <tar destfile="${version.output}/${packagename}-${project.version}-linux64.tar.gz" longfile="posix" compression="gzip">
                                     <tarfileset dir="target/assembly/linux64" filemode="0644" dirmode="0755">
                                         <exclude name="**/*.sh"/>
@@ -206,5 +238,16 @@
             <artifactId>wso2bpel-mgr</artifactId>
             <version>${project.version}</version>
         </dependency>
-    </dependencies>  
+	    <dependency>
+			<groupId>org.wso2.bps</groupId>
+			<artifactId>bpel-eventlistener</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.39</version>
+		</dependency>
+    </dependencies> 
+
 </project>
