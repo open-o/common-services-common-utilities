@@ -132,35 +132,48 @@
                             </artifactItems>
                         </configuration>
                     </execution>
+					<execution>
+                        <id>unzip-wso2bps-${linux64id}</id>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.wso2</groupId>
+                                    <artifactId>wso2bps</artifactId>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${linux64outputdir}/wso2bps</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+					<execution>
+                        <id>unzip-wso2bps-${win64id}</id>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.wso2</groupId>
+                                    <artifactId>wso2bps</artifactId>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${win64outputdir}/wso2bps</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
-                    <execution>
-                        <id>unzip-wso2bps</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target name="unzip-wso2bps">
-                                <unzip src="lib/wso2bps-3.5.0.zip" dest="target/assembly/wso2bps">
-                                </unzip>
-                                <copy todir="${linux64outputdir}/wso2bps">
-                                    <fileset dir="target/assembly/wso2bps/wso2bps-3.5.0">
-                                        <exclude name="**/*.bat"/>
-                                    </fileset>
-                                </copy>
-                                <copy todir="${win64outputdir}/wso2bps">
-                                    <fileset dir="target/assembly/wso2bps/wso2bps-3.5.0">
-                                        <exclude name="**/*.sh"/>
-                                    </fileset>
-                                </copy>
-                            </target>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>distribution</id>
                         <phase>package</phase>
@@ -205,6 +218,12 @@
             <groupId>org.openo.common-services.common-utilities.wso2bpel-ext</groupId>
             <artifactId>wso2bpel-mgr</artifactId>
             <version>${project.version}</version>
+        </dependency>
+		<dependency>
+            <groupId>com.wso2</groupId>
+            <artifactId>wso2bps</artifactId>
+            <version>3.5.0</version>
+			<type>zip</type>
         </dependency>
     </dependencies>  
 </project>
