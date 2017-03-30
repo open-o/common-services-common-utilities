@@ -40,6 +40,10 @@
       <enabled>false</enabled>
     	</snapshots>
     </repository>
+	<repository>
+    	<id>smartbearsoftware</id>
+    	<url>http://smartbearsoftware.com/repository/maven2/</url>
+    </repository>
   </repositories>
   
     <build>
@@ -422,20 +426,14 @@
 </dependency>
 
         <dependency>
-            <groupId>com.eviware.soapui</groupId>
+            <groupId>eviware</groupId>
             <artifactId>soapui</artifactId>
             <version>1.7.1</version>
-            <type>jar</type>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/soapui-1.7.1.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>com.eviware.soapui</groupId>
+            <groupId>eviware</groupId>
             <artifactId>soapui-xmlbeans</artifactId>
             <version>1.7</version>
-            <type>jar</type>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/soapui-xmlbeans-1.7.jar</systemPath>
         </dependency>
 
     </dependencies>
