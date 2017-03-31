@@ -182,7 +182,7 @@
                         </goals>
                         <configuration>
                             <target name="distribution">
-                                <copy todir="target/assembly/linux64/wso2bps-ext/lib">
+                                <!--copy todir="target/assembly/linux64/wso2bps-ext/lib">
                                     <fileset dir="../../wso2bpel-mgr/lib">
                                         <include name="*"/>
                                     </fileset>
@@ -191,7 +191,7 @@
                                     <fileset dir="../../wso2bpel-mgr/lib">
                                         <include name="*"/>
                                     </fileset>
-                                </copy>
+                                </copy-->
                                 <tar destfile="${version.output}/${packagename}-${project.version}-linux64.tar.gz" longfile="posix" compression="gzip">
                                     <tarfileset dir="target/assembly/linux64" filemode="0644" dirmode="0755">
                                         <exclude name="**/*.sh"/>
