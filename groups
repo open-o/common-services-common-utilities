@@ -1,5 +1,4 @@
 # UUID                                                                           	Group Name
 #
-4d92abee242d1557d113c660bb27531f7553f69c                                         	GitHub Replication
 ldap:cn=openo-gerrit-common-services-committers,ou=Groups,dc=freestandards,dc=org	ldap/openo-gerrit-common-services-committers
 ldap:cn=openo-gerrit-commonservice-committers,ou=Groups,dc=freestandards,dc=org  	ldap/openo-gerrit-commonservice-committers
