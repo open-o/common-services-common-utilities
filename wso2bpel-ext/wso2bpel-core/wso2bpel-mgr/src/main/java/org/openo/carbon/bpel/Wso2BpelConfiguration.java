@@ -143,7 +143,11 @@ public class Wso2BpelConfiguration extends Configuration {
 
   @JsonProperty
   public void setWso2Path(String wso2Path) {
-    this.wso2Path = wso2Path;
+    if (wso2Path.startsWith("/") == false) {
+      this.wso2Path = System.getProperty("WSO2_EXT_HOME") + "/" + wso2Path;
+    } else {
+      this.wso2Path = wso2Path;
+    }
   }
 
   @JsonProperty
@@ -153,7 +157,11 @@ public class Wso2BpelConfiguration extends Configuration {
 
   @JsonProperty
   public void setWso2UploadFilePath(String wso2UploadFilePath) {
-    this.wso2UploadFilePath = wso2UploadFilePath;
+    if (wso2UploadFilePath.startsWith("/") == false) {
+      this.wso2UploadFilePath = System.getProperty("WSO2_EXT_HOME") + "/" + wso2UploadFilePath;
+    } else {
+      this.wso2UploadFilePath = wso2UploadFilePath;
+    }
   }
 
   @JsonProperty
@@ -163,7 +171,11 @@ public class Wso2BpelConfiguration extends Configuration {
 
   @JsonProperty
   public void setWso2SslJksFile(String wso2SslJksFile) {
-    this.wso2SslJksFile = wso2SslJksFile;
+    if (wso2SslJksFile.startsWith("/") == false) {
+      this.wso2SslJksFile = System.getProperty("WSO2_EXT_HOME") + "/" + wso2SslJksFile;
+    } else {
+      this.wso2SslJksFile = wso2SslJksFile;
+    }
   }
 
   @JsonProperty

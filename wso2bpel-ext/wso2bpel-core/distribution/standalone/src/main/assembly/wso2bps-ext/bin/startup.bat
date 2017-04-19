@@ -20,16 +20,18 @@ title wso2bpel-service
 set RUNHOME=%~dp0
 echo ### RUNHOME: %RUNHOME%
 echo ### Starting wso2bpel-service
+set WSO2_EXT_HOME=%RUNHOME%\..
 
 set JAVA="%JAVA_HOME%\bin\java.exe"
 set port=8312
 set jvm_opts=-Xms50m -Xmx128m
 rem set jvm_opts=%jvm_opts% -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=%port%,server=y,suspend=n
-set class_path=%RUNHOME%;..\lib\*;%RUNHOME%..\wso2bpel-service.jar
+set jvm_opts=%jvm_opts% -DWSO2_EXT_HOME=%WSO2_EXT_HOME%
+set class_path=%RUNHOME%;%WSO2_EXT_HOME%\lib\*;%WSO2_EXT_HOME%\wso2bpel-service.jar
 echo ### jvm_opts: %jvm_opts%
 echo ### class_path: %class_path%
 
-%JAVA% -classpath %class_path% %jvm_opts% org.openo.carbon.bpel.Wso2BpelApplication server %RUNHOME%../conf/wso2bpel.yml
+%JAVA% -classpath %class_path% %jvm_opts% org.openo.carbon.bpel.Wso2BpelApplication server %WSO2_EXT_HOME%/conf/wso2bpel.yml
 
 IF ERRORLEVEL 1 goto showerror
 exit

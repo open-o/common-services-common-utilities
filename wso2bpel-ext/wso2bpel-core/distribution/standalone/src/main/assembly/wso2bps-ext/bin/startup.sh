@@ -16,6 +16,7 @@
 
 DIRNAME=`dirname $0`
 RUNHOME=`cd $DIRNAME/; pwd`
+WSO_EXT_HOME=${RUNHOME}/..
 echo @RUNHOME@ $RUNHOME
 
 echo @JAVA_HOME@ $JAVA_HOME
@@ -24,7 +25,8 @@ echo @JAVA@ $JAVA
 
 JAVA_OPTS="-Xms50m -Xmx128m -Djava.awt.headless=true"
 port=8312
-#JAVA_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$port,server=y,suspend=n"
+# JAVA_OPTS="$JAVA_OPTS -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$port,server=y,suspend=n"
+JAVA_OPTS="$JAVA_OPTS -DWSO2_EXT_HOME=${WSO_EXT_HOME}"
 echo @JAVA_OPTS@ $JAVA_OPTS
 
 class_path="$RUNHOME/:$RUNHOME/../lib/*:$RUNHOME/../wso2bpel-service.jar"
