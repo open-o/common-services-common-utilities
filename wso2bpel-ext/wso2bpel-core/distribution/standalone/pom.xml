@@ -270,7 +270,7 @@
                             <outputDirectory>${linux64outputdir}/wso2bps/repository/conf</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>src/main/assembly/wso2bps/repository/conf</directory>
+                                    <directory>src/main/assembly/wso2bps/repository/conf/carbon</directory>
                                     <filtering>false</filtering>
                                     <includes>
                                         <include>**/*</include>
