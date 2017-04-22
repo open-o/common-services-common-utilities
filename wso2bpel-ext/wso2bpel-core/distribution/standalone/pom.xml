@@ -261,7 +261,7 @@
 						
                     </execution>
 					<execution>
-                        <id>copy-config-resources</id>
+                        <id>copy-config-resources-linux</id>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -274,6 +274,66 @@
                                     <filtering>false</filtering>
                                     <includes>
                                         <include>**/*</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+							<overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
+					<execution>
+                        <id>copy-config-resources-win</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${win64outputdir}/wso2bps/repository/conf</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/assembly/wso2bps/repository/conf/carbon</directory>
+                                    <filtering>false</filtering>
+                                    <includes>
+                                        <include>**/*</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+							<overwrite>true</overwrite>
+                        </configuration>
+                    </execution>					
+					<execution>
+                        <id>copy-bpel4rest-resources-linux</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${linux64outputdir}/wso2bps/repository/components/lib</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../../BPEL4RESTLight/target</directory>
+                                    <filtering>false</filtering>
+                                    <includes>
+                                        <include>**/bpel4rest.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+							<overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
+					<execution>
+                        <id>copy-bpel4rest-resources-win</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${win64outputdir}/wso2bps/repository/components/lib</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../../BPEL4RESTLight/target</directory>
+                                    <filtering>false</filtering>
+                                    <includes>
+                                        <include>**/bpel4rest.jar</include>
                                     </includes>
                                 </resource>
                             </resources>
