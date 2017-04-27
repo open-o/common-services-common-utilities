@@ -28,6 +28,9 @@
     <artifactId>wso2bpel-mgr</artifactId>
     <name>common-services-common-utilities/wso2bpel-ext/wso2bpel-core/wso2bpel-mgr</name>
     <packaging>jar</packaging>
+    <properties>
+        <sonar.skip>true</sonar.skip>
+    </properties>
 	
   <repositories>
     <repository>
